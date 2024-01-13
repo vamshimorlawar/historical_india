@@ -23,7 +23,7 @@ const Navbar = () => {
       ) : (
         <>
            <div className="flex gap-4 items-center">
-            <div>{session?.user?.email}</div>
+            <Link href="/profile">Profile</Link>
             <Button onClick={()=>{
               signOut();
             }}>Logout</Button>

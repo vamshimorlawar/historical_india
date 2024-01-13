@@ -7,14 +7,14 @@ import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
 
 const LoginForm = () => {
-  const session = useSession();
   const router = useRouter();
+  const {data: session, status: sessionStatus} = useSession();
 
   useEffect(() => {
-    if (session?.status == "authenticated") {
-      router.replace("/");
+    if (sessionStatus == "authenticated") {
+      router.replace("/profile");
     }
-  }, [session, router]);
+  }, [sessionStatus, router]);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
@@ -46,7 +46,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
+    sessionStatus !== 'authenticated' && <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
       <Input
         type="email"
         name="email"

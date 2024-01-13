@@ -1,11 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const SignupForm = () => {
   const router = useRouter();
+  const {data: session, status: sessionStatus} = useSession();
+
+  useEffect(() => {
+    if (sessionStatus == "authenticated") {
+      router.replace("/profile");
+    }
+  }, [sessionStatus, router]);
+
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
     email: "",
@@ -46,7 +55,7 @@ const SignupForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
+    sessionStatus !== 'authenticated' && <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
       <Input
         type="email"
         name="email"
