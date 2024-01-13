@@ -5,7 +5,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="h-full">
       <Navbar />
-      <main>{children}</main>
+      <main className="h-full py-20">{children}</main>
       <Footer />
     </div>
   );
