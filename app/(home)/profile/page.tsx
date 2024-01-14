@@ -12,9 +12,9 @@ const ProfilePage = () => {
       <div className="flex justify-center flex-col">
         <div>
           <div>Name: Vamshikiran</div>
-          <div>Email: vamshimorlawar@gmail.com</div>
+          <div>Email: {session.user?.email}</div>
         </div>
-        <div className="mt-4">Mudras: 2038</div>
+        <div className="mt-4">points: 2038</div>
         <div className="mt-4">
           <div>Article Stats</div>
           <div>

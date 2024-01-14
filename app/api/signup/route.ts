@@ -1,5 +1,6 @@
 import { connectDB } from "@/utils/db";
 import User from "@/model/user";
+import UserStats from "@/model/userstats";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
@@ -21,7 +22,17 @@ export const POST = async (req: any) => {
   });
 
   try {
-    await newUser.save();
+    const savedUser = await newUser.save();
+
+    const newUserStats = new UserStats({
+      user: savedUser._id,
+      points: 0,
+      articlesCreated: 0,
+      articlesEdited: 0,
+    });
+
+    await newUserStats.save();
+
     return new NextResponse("User is registered", { status: 200 });
   } catch (error: any) {
     return new NextResponse(error, { status: 500 });
