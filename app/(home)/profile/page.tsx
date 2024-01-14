@@ -29,7 +29,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="flex mt-20 ml-20">
+    <div className="flex my-20">
       <div className="flex justify-center flex-col">
         <div>
           <div>Name: {userData?.user.firstName}</div>

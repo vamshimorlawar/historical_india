@@ -6,7 +6,7 @@ import Link from "next/link";
 const Navbar = () => {
   const { data: session } = useSession();
   return (
-    <div className="fixed top-0 flex items-center justify-between p-4 bg-orange-500 text-neutral-800 w-full">
+    <div className="flex items-center justify-between p-4 bg-orange-500 text-neutral-800 w-full">
       <div className="flex gap-4">
         <Link href="/">Home</Link>
         <Link href="/create-article">Create Article</Link>
