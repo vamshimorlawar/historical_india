@@ -25,7 +25,7 @@ const ProfilePage = () => {
   }, []);
 
   if (!userData && session) {
-    return <div>Loading..</div>;
+    return <div>Loading...</div>;
   }
 
   return (

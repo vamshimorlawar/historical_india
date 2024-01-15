@@ -54,15 +54,9 @@ const ArticleForm = () => {
 
   const [value, setValue] = useState(""); //< category
   const [open, setOpen] = useState(false);
+  const [error, setError] = useState("");
   const { data: session } = useSession();
   const router = useRouter();
-
-  const getUserData = async () => {
-    const email = session?.user?.email;
-    const response = await fetch(`/api/getUserData?email=${email}`);
-    const userData = await response.json();
-    return userData;
-  };
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -73,12 +67,35 @@ const ArticleForm = () => {
       const title = e.target[0].value;
       const tagline = e.target[1].value;
       const category = value;
+      const email = session.user?.email;
 
-      const userData = await getUserData();
+      // validation for article form data here;
 
-      // update UserStats
-      // create Article
-      // redirect to editor page (should be protect, else redirect to login)
+      const articleData = {
+        email,
+        title,
+        tagline,
+        category,
+      };
+
+      try {
+        const response = await fetch("/api/createArticle", {
+          method: "POST",
+          headers: {
+            ContentType: "application/json",
+          },
+          body: JSON.stringify(articleData),
+        });
+
+        if (response.status == 200) {
+          // check how to read NextResponse.json()
+          // router.push("/articleEditor");
+        } else {
+          setError("Error in Creating Article");
+        }
+      } catch (error) {
+        setError("Internal Server Error");
+      }
     }
   };
 

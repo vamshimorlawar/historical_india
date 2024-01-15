@@ -1,5 +1,4 @@
 import ArticleForm from "@/components/ArticleForm";
-import { ThumbsUp } from "lucide-react";
 import Image from "next/image";
 import Guidelines from "./_components/guidelines";
 
@@ -12,7 +11,6 @@ const CreateArticlePage = () => {
           alt="historical india"
           width={500}
           height={500}
-          objectFit="cover"
         />
       </div>
       <div className="flex justify-center gap-6 mt-10">
