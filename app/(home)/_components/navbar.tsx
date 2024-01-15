@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { ModeToggle } from "./modeToggle";
 
 const Navbar = () => {
   const { data: session } = useSession();
@@ -16,17 +17,23 @@ const Navbar = () => {
       {!session ? (
         <>
           <div className="flex gap-4">
+            <ModeToggle />
             <Link href="/login">Login</Link>
             <Link href="/sign-up">Signup</Link>
           </div>
         </>
       ) : (
         <>
-           <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center">
+            <ModeToggle />
             <Link href="/profile">Profile</Link>
-            <Button onClick={()=>{
-              signOut();
-            }}>Logout</Button>
+            <Button
+              onClick={() => {
+                signOut();
+              }}
+            >
+              Logout
+            </Button>
           </div>
         </>
       )}

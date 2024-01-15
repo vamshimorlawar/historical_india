@@ -11,6 +11,7 @@ const CreateArticlePage = () => {
           alt="historical india"
           width={500}
           height={500}
+          priority={false}
         />
       </div>
       <div className="flex justify-center gap-6 mt-10">
