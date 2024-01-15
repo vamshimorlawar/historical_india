@@ -17,6 +17,8 @@ import {
 import { Check, ChevronsUpDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const ArticleForm = () => {
   const articleCategories = [
@@ -50,34 +52,40 @@ const ArticleForm = () => {
     },
   ];
 
-  const [value, setValue] = React.useState(""); //< category
-  const [open, setOpen] = React.useState(false);
-  
-  const handleSubmit = (e:any) => {
+  const [value, setValue] = useState(""); //< category
+  const [open, setOpen] = useState(false);
+  const { data: session } = useSession();
+  const router = useRouter();
+
+  const getUserData = async () => {
+    const email = session?.user?.email;
+    const response = await fetch(`/api/getUserData?email=${email}`);
+    const userData = await response.json();
+    return userData;
+  };
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    
-    const title = e.target[0].value;
-    const tagline = e.target[1].value;
-    const category = value;
 
+    if (!session) {
+      router.push("/login");
+    } else {
+      const title = e.target[0].value;
+      const tagline = e.target[1].value;
+      const category = value;
 
-  }
-  
-  
+      const userData = await getUserData();
+
+      // update UserStats
+      // create Article
+      // redirect to editor page (should be protect, else redirect to login)
+    }
+  };
+
   return (
     <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        name="title"
-        placeholder="Title"
-        required
-      />
-      <Input
-        type="text"
-        name="tagline"
-        placeholder="Tagline"
-        required
-      />
+      <Input type="text" name="title" placeholder="Title" required />
+      <Input type="text" name="tagline" placeholder="Tagline" required />
       <Popover open={open} onOpenChange={setOpen}>
         <PopoverTrigger asChild>
           <Button
@@ -120,7 +128,7 @@ const ArticleForm = () => {
           </Command>
         </PopoverContent>
       </Popover>
-      <Button type="submit" >Create Article</Button>
+      <Button type="submit">Create Article</Button>
     </form>
   );
 };
