@@ -13,7 +13,7 @@ const ArticleSchema = new mongoose.Schema(
   {
     createdBy: { type: String },
     creatorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    title: { type: String },
+    title: { type: String, unique: true },
     tagline: { type: String },
     category: { type: String },
     editCount: { type: Number },

@@ -1,6 +1,6 @@
-import Article from "@/model/article";
-import User from "@/model/user";
-import UserStats from "@/model/userstats";
+import Article from "@/model/Article";
+import User from "@/model/User";
+import UserStats from "@/model/UserStats";
 import { connectDB } from "@/utils/db";
 import pointsTo from "@/utils/points";
 import { NextResponse } from "next/server";
@@ -15,8 +15,6 @@ export const POST = async (req: any, res: NextResponse) => {
 
   const userStats = await UserStats.findOne({ user: creatorId });
   const newUserPoints = userStats.points + pointsTo.createArticle;
-  console.log("NewUserPoints", newUserPoints);
-  
 
   const newArticle = new Article({
     createdBy: user.firstName,

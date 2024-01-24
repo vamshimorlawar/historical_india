@@ -1,5 +1,5 @@
 import { connectDB } from "@/utils/db";
-import User from "@/model/user";
+import User from "@/model/User";
 import CredentialsProvider from "next-auth/providers/credentials";
 import NextAuth from "next-auth/next";
 import bcrypt from "bcryptjs";

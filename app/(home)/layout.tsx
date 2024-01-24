@@ -3,7 +3,7 @@ import Navbar from "./_components/navbar";
 
 const HomeLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-full">
+    <div className="min-h-screen">
       <Navbar />
       <main className="mx-20">{children}</main>
       <Footer />

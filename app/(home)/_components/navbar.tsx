@@ -16,7 +16,7 @@ const Navbar = () => {
       </div>
       {!session ? (
         <>
-          <div className="flex gap-4">
+          <div className="flex gap-4 items-center">
             <ModeToggle />
             <Link href="/login">Login</Link>
             <Link href="/sign-up">Signup</Link>

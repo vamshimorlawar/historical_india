@@ -1,6 +1,6 @@
 import { connectDB } from "@/utils/db";
-import User from "@/model/user";
-import UserStats from "@/model/userstats";
+import User from "@/model/User";
+import UserStats from "@/model/UserStats";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
 
