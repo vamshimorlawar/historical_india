@@ -12,7 +12,9 @@ const LoginForm = () => {
 
   useEffect(() => {
     if (sessionStatus == "authenticated") {
-      router.replace("/profile");
+      const user = session.user;
+      const userId = user?.id;
+      router.replace(`/profile/${userId}`);
     }
   }, [sessionStatus, router]);
 
@@ -43,6 +45,9 @@ const LoginForm = () => {
       email,
       password,
     });
+
+    console.log("res ", res);
+    
   };
 
   return (

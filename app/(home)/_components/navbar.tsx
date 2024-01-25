@@ -7,8 +7,8 @@ import { ModeToggle } from "./modeToggle";
 const Navbar = () => {
   const { data: session } = useSession();
   return (
-    <div className="flex items-center justify-between p-4 bg-orange-500 text-neutral-800 w-full">
-      <div className="flex gap-4">
+    <div className="flex flex-wrap gap-2 items-center justify-between p-4 bg-orange-500 text-neutral-800 w-full">
+      <div className="flex gap-4 flex-wrap">
         <Link href="/">Home</Link>
         <Link href="/create-article">Create Article</Link>
         <Link href="/search">Search</Link>
@@ -16,7 +16,7 @@ const Navbar = () => {
       </div>
       {!session ? (
         <>
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-4 items-center flex-wrap">
             <ModeToggle />
             <Link href="/login">Login</Link>
             <Link href="/sign-up">Signup</Link>
@@ -25,7 +25,7 @@ const Navbar = () => {
       ) : (
         <>
           <div className="flex gap-4 items-center">
-            <Link href="/profile">Profile</Link>
+            <Link href={`/profile/${session.user?.id}`}>Profile</Link>
             <Button
               onClick={() => {
                 signOut();

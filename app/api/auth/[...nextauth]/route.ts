@@ -5,6 +5,7 @@ import NextAuth from "next-auth/next";
 import bcrypt from "bcryptjs";
 import { Account, User as AuthUser } from "next-auth";
 
+
 export const authOptions: any = {
   providers: [
     CredentialsProvider({
@@ -23,7 +24,7 @@ export const authOptions: any = {
               credentials.password,
               user.password
             );
-            if (passwordMatch) {
+            if (passwordMatch) {             
               return user;
             }
           }
@@ -34,9 +35,25 @@ export const authOptions: any = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account }: { user: AuthUser; account: Account }) {
+    async jwt({ token, account, user }: { token: any, user: AuthUser; account: Account}) {
+      // Persist the OAuth access_token and or the user id to the token right after signin
+      if (account) {
+        token.accessToken = account.access_token
+        token.id = user.id
+      }
+      return token;
+    },  
+    async session({ session, token, user }: { session: any, token: any, user: AuthUser}) {
+      // Send properties to the client, like an access_token and user id from a provider.
+      session.accessToken = token.accessToken
+      session.user.id = token.id
+      
+      return session
+    },
+    async signIn({ user, account }: { user: AuthUser, account: Account}) {
       if (account?.provider == "credentials") {
-        return true;
+        
+        return user;
       }
     },
   },

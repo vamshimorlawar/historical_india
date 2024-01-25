@@ -50,13 +50,13 @@ const ArticleEditor = ({
 
   return (
     article && (
-      <div className="p-20">
+      <div className="p-10 md:p-20">
         <div>
           <div className="font-bold text-2xl md:text-[36px]">
             {article.title}
             <span className="font-light">: {article.tagline}</span>
           </div>
-          <div className="flex gap-2 text-xs items-center mt-4">
+          <div className="flex gap-2 text-xs items-center mt-4 flex-wrap">
             <div className="">
               Category:{" "}
               <Link href="#" className="text-blue-500 underline">
