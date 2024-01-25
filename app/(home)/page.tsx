@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface Article {
@@ -97,7 +98,9 @@ const HomePage = () => {
                   key={article._id}
                   className="p-5 border-gray-600 border-2 rounded-sm"
                 >
-                  {article.title}
+                  <Link href={`/articles/view/${article._id.toString()}`}>
+                    {article.title}
+                  </Link>
                 </div>
               ))
             )}
