@@ -20,7 +20,10 @@ import { Button } from "./ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
+
 const ArticleForm = () => {
+  const router = useRouter();
+
   const articleCategories = [
     {
       value: "politics",
@@ -51,12 +54,12 @@ const ArticleForm = () => {
       label: "Other",
     },
   ];
-
   const [value, setValue] = useState(""); //< category
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
   const { data: session } = useSession();
-  const router = useRouter();
+  
+  
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
@@ -86,10 +89,9 @@ const ArticleForm = () => {
           },
           body: JSON.stringify(articleData),
         });
-
+        const data = await response.json();
         if (response.status == 200) {
-          // check how to read NextResponse.json()
-          // router.push("/articleEditor");
+          router.push(`/articles/edit/${data.articleId}`);
         } else {
           setError("Error in Creating Article");
         }

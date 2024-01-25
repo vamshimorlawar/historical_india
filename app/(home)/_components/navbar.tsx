@@ -25,7 +25,6 @@ const Navbar = () => {
       ) : (
         <>
           <div className="flex gap-4 items-center">
-            <ModeToggle />
             <Link href="/profile">Profile</Link>
             <Button
               onClick={() => {
@@ -34,6 +33,7 @@ const Navbar = () => {
             >
               Logout
             </Button>
+            <ModeToggle />
           </div>
         </>
       )}

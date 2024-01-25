@@ -1,4 +1,5 @@
 "use client";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { useEffect, useState } from "react";
 
@@ -61,11 +62,12 @@ const HomePage = () => {
 
   return (
     <div className="mb-20">
-      <div className="flex items-center justify-center flex-col p-24">
-        <div className="text-3xl">Welcome to Historical India</div>
-        <div className="text-neutral-400">Encyclopedia of Indian History!</div>
+      <div className="flex items-center justify-center flex-col w-100 h-[500px]">
+        <div>
+          <div className="text-3xl font-bold">Welcome to Historical India</div>
+        </div>
       </div>
-      <div>
+      <div className="px-24 mt-10">
         <div>
           <div className="font-medium text-xl">Top Articles</div>
           <div className="flex mt-2">
@@ -122,8 +124,9 @@ const HomePage = () => {
         <Separator className="my-4" />
       </div>
 
-      <div className="flex items-center justify-center p-4 border-2 w-fit border-orange-300 mx-auto mt-10">
-        Contact: historicalindia@xyz.com
+      <div className="flex items-center justify-center flex-col mt-10 bg-orange-500 p-20">
+        <div className="text-slate-50">historicalindia@xyz.com</div>
+        <Button className="mt-4">Create Arrticle</Button>
       </div>
     </div>
   );

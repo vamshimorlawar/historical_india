@@ -34,7 +34,7 @@ export const POST = async (req: any, res: NextResponse) => {
     }
 
     return NextResponse.json(
-      { message: "Article Created and UserStats Updated" },
+      { message: "Article Created and UserStats Updated", articleId: savedArticle._id },
       { status: 200 }
     );
   } catch (error: any) {

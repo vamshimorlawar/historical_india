@@ -29,12 +29,11 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className="flex my-20">
-      <div className="flex justify-center flex-col">
-        <div>
-          <div>Name: {userData?.user.firstName}</div>
-          <div>Email: {userData?.user.email}</div>
-        </div>
+    <div className="flex justify-center flex-col items-center p-24">
+      <div className="border-slate-200 rounded border-2 p-20">
+        <div>Name: {userData?.user.firstName}</div>
+        <div>Email: {userData?.user.email}</div>
+
         <div className="mt-4">Points: {userData?.userStats.points}</div>
         <div className="mt-4">
           <div>Article Stats</div>
