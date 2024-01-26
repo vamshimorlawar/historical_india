@@ -7,6 +7,7 @@ interface ArticleDocument extends Document {
   tagline: String;
   category: String;
   editCount: Number;
+  content: String;
 }
 
 const ArticleSchema = new mongoose.Schema(
@@ -17,6 +18,7 @@ const ArticleSchema = new mongoose.Schema(
     tagline: { type: String },
     category: { type: String },
     editCount: { type: Number },
+    content: { type: String },
   },
   { timestamps: true }
 );

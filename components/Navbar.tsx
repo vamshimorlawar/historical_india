@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { ModeToggle } from "./modeToggle";
+import { ModeToggle } from "./ModeToggle";
 
 const Navbar = () => {
   const { data: session } = useSession();

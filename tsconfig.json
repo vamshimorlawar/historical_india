@@ -21,14 +21,15 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "typeRoots": ["./types", "./node_modules/@types"],
+    "typeRoots": ["./types", "./node_modules/@types"]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/(home)/articles/edit/[articleId]"
-, "app/(home)/_components/navbar.tsx"  ],
+    "app/(home)/articles/edit/[articleId]",
+    "components/Navbar.tsx"
+  ],
   "exclude": ["node_modules"]
 }

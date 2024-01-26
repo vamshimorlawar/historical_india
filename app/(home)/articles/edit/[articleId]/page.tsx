@@ -1,13 +1,25 @@
-import React from 'react'
+import Tiptap from "@/components/TipTap";
+import React from "react";
 
-const ArticleEditor = ({params}:{
+const ArticleEditor = ({
+  params,
+}: {
   params: {
-    id: string,
-  }
+    id: string;
+  };
 }) => {
   return (
-    <div>Article Editor {params.id}</div>
-  )
-}
+    <div className="p-24">
+      <div className="flex">
+        <div>
+
+        </div>
+        <div>
+          <Tiptap />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default ArticleEditor;

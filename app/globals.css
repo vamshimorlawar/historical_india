@@ -79,4 +79,18 @@ body,
   body {
     @apply bg-background text-foreground;
   }
+  
+}
+
+
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.ProseMirror {
+  border: 1px solid rgb(213, 213, 213);
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 200px;
 }
