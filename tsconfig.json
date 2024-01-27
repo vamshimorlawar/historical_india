@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/(home)/articles/edit/[articleId]",
+    "app/(home)/article/edit/[articleId]",
     "components/Navbar.tsx"
   ],
   "exclude": ["node_modules"]

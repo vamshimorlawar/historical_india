@@ -63,7 +63,7 @@ const HomePage = () => {
 
   return (
     <div className="mb-20">
-      <div className="flex items-center justify-center flex-col w-100 h-[500px]">
+      <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]">
         <div>
           <div className="text-3xl font-bold">Welcome to Historical India</div>
         </div>
@@ -71,7 +71,7 @@ const HomePage = () => {
       <div className="px-24 mt-10">
         <div>
           <div className="font-medium text-xl">Top Articles</div>
-          <div className="flex mt-2">
+          <div className="flex mt-2 gap-2">
             {topArticles.length === 0 ? (
               <div>No Top Articles</div>
             ) : (
@@ -80,7 +80,7 @@ const HomePage = () => {
                   key={article._id}
                   className="p-5 border-gray-600 border-2 rounded-sm"
                 >
-                  <Link href={`/articles/view/${article._id.toString()}`}>
+                  <Link href={`/article/view/${article._id.toString()}`}>
                     {article.title}
                   </Link>
                 </div>
@@ -91,7 +91,7 @@ const HomePage = () => {
         <Separator className="my-4" />
         <div>
           <div className="font-medium text-xl">New Articles</div>
-          <div className="flex mt-2">
+          <div className="flex mt-2 gap-2">
             {newArticles.length === 0 ? (
               <div>No New Articles</div>
             ) : (
@@ -100,7 +100,7 @@ const HomePage = () => {
                   key={article._id}
                   className="p-5 border-gray-600 border-2 rounded-sm"
                 >
-                  <Link href={`/articles/view/${article._id.toString()}`}>
+                  <Link href={`/article/view/${article._id.toString()}`}>
                     {article.title}
                   </Link>
                 </div>
@@ -111,7 +111,7 @@ const HomePage = () => {
         <Separator className="my-4" />
         <div>
           <div className="font-medium text-xl">Top Contributor</div>
-          <div className="flex mt-2">
+          <div className="flex mt-2 gap-2">
             {topContributors.length === 0 ? (
               <div>No Contributors</div>
             ) : (

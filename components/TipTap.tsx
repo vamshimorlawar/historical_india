@@ -1,7 +1,16 @@
 "use client";
-import { Editor, EditorContent, useEditor } from '@tiptap/react'
-import StarterKit from '@tiptap/starter-kit'
-import React from 'react';
+import { Editor, EditorContent, generateHTML, useEditor } from "@tiptap/react";
+import StarterKit from "@tiptap/starter-kit";
+import {
+  BoldIcon,
+  ItalicIcon,
+  Redo2Icon,
+  StrikethroughIcon,
+  UnderlineIcon,
+  Undo2Icon,
+} from "lucide-react";
+import React, { useEffect, useMemo } from "react";
+import DOMPurify from 'dompurify';
 
 type MenuProps = {
   editor: Editor | null;
@@ -9,140 +18,88 @@ type MenuProps = {
 
 const Menu: React.FC<MenuProps> = ({ editor }) => {
   if (!editor) {
-    return null
+    return null;
   }
 
   return (
-    <>
+    <div className="flex flex-wrap gap-2 mb-4">
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
-        className={editor.isActive('bold') ? 'is-active' : ''}
+        className={
+          editor.isActive("bold")
+            ? "is-active border-2 border-black"
+            : "border-none"
+        }
       >
-        bold
+        <BoldIcon />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleItalic().run()}
-        className={editor.isActive('italic') ? 'is-active' : ''}
+        className={
+          editor.isActive("italic")
+            ? "is-active border-2 border-black"
+            : "border-none"
+        }
       >
-        italic
+        <ItalicIcon />
       </button>
       <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
-        className={editor.isActive('strike') ? 'is-active' : ''}
+        className={
+          editor.isActive("strike")
+            ? "is-active border-2 border-black"
+            : "border-none"
+        }
       >
-        strike
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleCode().run()}
-        className={editor.isActive('code') ? 'is-active' : ''}
-      >
-        code
-      </button>
-      <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-        clear marks
-      </button>
-      <button onClick={() => editor.chain().focus().clearNodes().run()}>
-        clear nodes
-      </button>
-      <button
-        onClick={() => editor.chain().focus().setParagraph().run()}
-        className={editor.isActive('paragraph') ? 'is-active' : ''}
-      >
-        paragraph
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-        className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
-      >
-        h1
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-        className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
-      >
-        h2
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-        className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
-      >
-        h3
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-        className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
-      >
-        h4
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-        className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
-      >
-        h5
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-        className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
-      >
-        h6
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
-        className={editor.isActive('bulletList') ? 'is-active' : ''}
-      >
-        bullet list
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleOrderedList().run()}
-        className={editor.isActive('orderedList') ? 'is-active' : ''}
-      >
-        ordered list
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-        className={editor.isActive('codeBlock') ? 'is-active' : ''}
-      >
-        code block
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
-        className={editor.isActive('blockquote') ? 'is-active' : ''}
-      >
-        blockquote
+        <StrikethroughIcon />
       </button>
       <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-        horizontal rule
+        HR
       </button>
       <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-        hard break
+        BR
       </button>
       <button onClick={() => editor.chain().focus().undo().run()}>
-        undo
+        <Undo2Icon />
       </button>
       <button onClick={() => editor.chain().focus().redo().run()}>
-        redo
+        <Redo2Icon />
       </button>
-    </>
-  )
+    </div>
+  );
+};
+
+type TipTapProps = {
+  setContent: (content: string) => void;
+  content: string;
 }
 
-export default () => {
+const TipTap: React.FC<TipTapProps> = ({setContent, content}) => {
   const editor = useEditor({
-    extensions: [
-      StarterKit,
-    ],
-    content: "",
+    extensions: [StarterKit],
+    content: content || "",
     editorProps: {
       attributes: {
-        spellcheck: 'false',
+        spellcheck: "false",
       },
     },
-  })
+  });
+
+  
+  const tiptapHTML = editor?.getHTML() || "";
+  
+  useEffect(()=>{
+    const sanitizedTipTapHTML = DOMPurify.sanitize(tiptapHTML);
+    setContent(sanitizedTipTapHTML);
+  }, [tiptapHTML]);
+  
 
   return (
     <div>
       <Menu editor={editor} />
       <EditorContent editor={editor} />
     </div>
-  )
-}
+  );
+};
+
+export default TipTap;

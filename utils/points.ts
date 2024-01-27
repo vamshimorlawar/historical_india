@@ -1,7 +1,7 @@
 const pointsTo = {
     createAccount: 50,
-    editArticle: 75,
-    createArticle: 100,
+    editArticle: 5,
+    createArticle: 10,
 }
 
 export default pointsTo;
