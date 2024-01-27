@@ -96,7 +96,7 @@ const ArticleViewer = ({
           </div>
         </div>
         <Separator className="mt-4" />
-        <div className="mt-4" dangerouslySetInnerHTML={{__html: article.content}}/>
+        <div className="mt-4 tiptap" dangerouslySetInnerHTML={{__html: article.content}}/>
       </div>
     )
   );
