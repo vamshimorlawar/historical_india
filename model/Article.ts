@@ -17,7 +17,7 @@ const ArticleSchema = new mongoose.Schema(
     title: { type: String, unique: true },
     tagline: { type: String },
     category: { type: String },
-    editCount: { type: Number },
+    editCount: { type: Number, default: 0 },
     content: { type: String, default: "" },
   },
   { timestamps: true }

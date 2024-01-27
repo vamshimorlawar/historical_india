@@ -12,9 +12,9 @@ const userStatsSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  points: { type: Number },
-  articlesCreated: { type: Number },
-  articlesEdited: { type: Number },
+  points: { type: Number, default: 0 },
+  articlesCreated: { type: Number, default: 0 },
+  articlesEdited: { type: Number, default: 0 },
 });
 
 export default mongoose.models.UserStats ||

@@ -1,9 +1,48 @@
-import React from 'react'
+"use client";
+import SearchInput from "@/components/SearchInput";
+import { ObjectId } from "mongoose";
+import Link from "next/link";
+import { useState } from "react";
 
-const SearchPage = () => {
+type Result = {
+  _id: ObjectId;
+  title: string;
+  tagline: string;
+  content: string;
+};
+
+const Search = () => {
+  const [searchResults, setSearchResults] = useState<Result[]>([]);
+
+  const handleSearch = async (query: string) => {
+    // Perform the search logic here
+    const response = await fetch(`/api/getArticles?query=${query}`);
+    if (response.status === 200) {
+      const data = await response.json();
+      setSearchResults(data.articles);
+    }
+  };
+
   return (
-    <div>SearchPage</div>
-  )
-}
+    <div className="p-20">
+      <SearchInput onSearch={handleSearch} />
+      {searchResults.length != 0 && <div className="mt-10">
+        <div>Showing Results from {searchResults.length} articles</div>
+        {searchResults.map((result) => (
+          <div
+            key={result._id.toString()}
+            className="p-4 border-2 rounded mt-2 mb-2"
+          >
+            <Link href={`/article/view/${result._id}`}>
+              <div className="font-bold text-xl">{result.title}</div>
+              <div className="text-ellipsis">{result.content.slice(0, 100)}...</div>
+              {/* You can display more information about the article */}
+            </Link>
+          </div>
+        ))}
+      </div>}
+    </div>
+  );
+};
 
-export default SearchPage;
+export default Search;

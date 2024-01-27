@@ -70,7 +70,7 @@ const ArticleEditor = ({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          creatorId: userId,
+          editorId: userId,
           articleId: article?._id,
           // title: article?.title,
           // tagline: article?.tagline,

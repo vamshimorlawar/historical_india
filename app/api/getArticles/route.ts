@@ -8,6 +8,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
   }
 
   const options = await req.nextUrl.searchParams.get("options");
+  const query = await req.nextUrl.searchParams.get("query"); 
 
   await connectDB();
 
@@ -15,8 +16,8 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     const parsedOptions = options ? JSON.parse(options) : {};
 
     const typeValue = parsedOptions.type;
-    const limitValue = parseInt(parsedOptions.limit);
-    const skipValue = parseInt(parsedOptions.skip);
+    const limitValue = parseInt(parsedOptions.limit) || 0;
+    const skipValue = parseInt(parsedOptions.skip) || 0;
 
     let sortOptions = {};
 
@@ -24,9 +25,23 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       sortOptions = { createdAt: -1 };
     } else if (typeValue == "top") {
       sortOptions = { editCount: -1 };
+    } else {
+      sortOptions = {};
     }
 
-    const articles = await Article.find()
+    let searchQuery = {};
+    if (query) {
+      // Customize the search query based on your requirements
+      searchQuery = {
+        $or: [
+          { title: { $regex: new RegExp(query, "i") } },
+          { tagline: { $regex: new RegExp(query, "i") } },
+          { content: { $regex: new RegExp(query, "i") } },
+        ],
+      };
+    }
+
+    const articles = await Article.find(searchQuery)
       .sort(sortOptions)
       .skip(skipValue)
       .limit(limitValue);

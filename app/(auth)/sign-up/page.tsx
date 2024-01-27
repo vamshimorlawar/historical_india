@@ -8,7 +8,7 @@ const SignupPage = () => {
       <SignupForm />
       <div className="text-xs mt-2">
         Already have an account?{" "}
-        <Link href="/login" className="text-orange-500 underline">
+        <Link href="/login" className="text-slate-500 underline">
           Login Here
         </Link>
       </div>

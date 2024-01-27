@@ -8,7 +8,7 @@ import { signIn, useSession } from "next-auth/react";
 
 const LoginForm = () => {
   const router = useRouter();
-  const {data: session, status: sessionStatus} = useSession();
+  const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
     if (sessionStatus == "authenticated") {
@@ -47,32 +47,33 @@ const LoginForm = () => {
     });
 
     console.log("res ", res);
-    
   };
 
   return (
-    sessionStatus !== 'authenticated' && <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
-      <Input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-      />
-      <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
-      <Button type="submit" className="bg-orange-600">
-        Login
-      </Button>
-    </form>
+    sessionStatus !== "authenticated" && (
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
+        <Input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
+        <Button type="submit">
+          Login
+        </Button>
+      </form>
+    )
   );
 };
 

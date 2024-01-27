@@ -8,7 +8,7 @@ import { Avatar, AvatarFallback } from "./ui/avatar";
 const Navbar = () => {
   const { data: session } = useSession();
   return (
-    <div className="flex flex-wrap gap-2 items-center justify-between p-4 bg-orange-500 text-neutral-800 w-full">
+    <div className="flex flex-wrap gap-2 items-center justify-between p-4 w-full">
       <div className="flex gap-4 flex-wrap">
         <Link href="/">Home</Link>
         <Link href="/create-article">Create Article</Link>
@@ -28,7 +28,9 @@ const Navbar = () => {
           <div className="flex gap-4 items-center">
             <Link href={`/profile/${session.user?.id}`}>
               <Avatar>
-                <AvatarFallback>{session.user?.email.charAt(0).toUpperCase()}</AvatarFallback>
+                <AvatarFallback>
+                  {session.user?.email.charAt(0).toUpperCase()}
+                </AvatarFallback>
               </Avatar>
             </Link>
             <Button

@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 
 const SignupForm = () => {
   const router = useRouter();
-  const {data: session, status: sessionStatus} = useSession();
+  const { data: session, status: sessionStatus } = useSession();
 
   useEffect(() => {
     if (sessionStatus == "authenticated") {
@@ -55,46 +55,46 @@ const SignupForm = () => {
   };
 
   return (
-    sessionStatus !== 'authenticated' && <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
-      <Input
-        type="email"
-        name="email"
-        placeholder="Email"
-        value={formData.email}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        type="text"
-        name="firstName"
-        placeholder="First Name"
-        value={formData.firstName}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        type="text"
-        name="lastName"
-        placeholder="Last Name"
-        value={formData.lastName}
-        onChange={handleChange}
-        required
-      />
-      <Input
-        type="password"
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-        required
-      />
-      <p className="text-red-600 text-xs">
-        {errorMessage && errorMessage}
-      </p>
-      <Button type="submit" className="bg-orange-600">
-        Signup
-      </Button>
-    </form>
+    sessionStatus !== "authenticated" && (
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
+        <Input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="text"
+          name="firstName"
+          placeholder="First Name"
+          value={formData.firstName}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="text"
+          name="lastName"
+          placeholder="Last Name"
+          value={formData.lastName}
+          onChange={handleChange}
+          required
+        />
+        <Input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
+        <Button type="submit">
+          Signup
+        </Button>
+      </form>
+    )
   );
 };
 

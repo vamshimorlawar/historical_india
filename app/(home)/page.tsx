@@ -63,11 +63,7 @@ const HomePage = () => {
 
   return (
     <div className="mb-20">
-      <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]">
-        <div>
-          <div className="text-3xl font-bold">Welcome to Historical India</div>
-        </div>
-      </div>
+      <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]"></div>
       <div className="px-24 mt-10">
         <div>
           <div className="font-medium text-xl">Top Articles</div>
@@ -129,8 +125,8 @@ const HomePage = () => {
         <Separator className="my-4" />
       </div>
 
-      <div className="flex items-center justify-center flex-col mt-10 bg-orange-500 p-20">
-        <div className="text-slate-50">historicalindia@xyz.com</div>
+      <div className="flex items-center justify-center flex-col mt-10 p-20">
+        <div>historicalindia@xyz.com</div>
         <Button className="mt-4">Create Arrticle</Button>
       </div>
     </div>

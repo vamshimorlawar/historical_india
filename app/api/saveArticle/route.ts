@@ -5,11 +5,12 @@ import pointsTo from "@/utils/points";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: any, res: NextResponse) => {
-  const { creatorId, articleId, content } = await req.json();
+  const { editorId: editorId, articleId, content } = await req.json();
 
   await connectDB();
 
   const article = await Article.findOne({ _id: articleId });
+  
 
   if (article) {
     article.content = content;
@@ -18,12 +19,17 @@ export const POST = async (req: any, res: NextResponse) => {
     return new NextResponse("Article Not Found", { status: 404 });
   }
 
-  const userStats = await UserStats.findOne({ user: creatorId });
-  const newUserPoints = userStats.points + pointsTo.editArticle;
+  const userStats = await UserStats.findOne({ user: editorId });
+  let newUserPoints = 0;
+  if (userStats) {
+    newUserPoints = userStats.points + pointsTo.editArticle;
+  }else{
+    return new NextResponse("User Not Found", { status: 404 });
+  }
 
   try {
     const savedArticle = await article.save();
-    if (savedArticle) {
+    if (savedArticle && newUserPoints) {
       userStats.points += newUserPoints;
       userStats.articlesEdited += 1;
       await userStats.save();
