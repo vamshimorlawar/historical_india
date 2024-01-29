@@ -24,10 +24,6 @@ const ProfilePage = () => {
     fetchUserData();
   }, []);
 
-  if (!userData && session) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div className="flex justify-center flex-col items-center p-24">
       <div className="border-slate-200 rounded border-2 p-20">

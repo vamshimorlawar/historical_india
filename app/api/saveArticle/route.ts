@@ -20,17 +20,13 @@ export const POST = async (req: any, res: NextResponse) => {
   }
 
   const userStats = await UserStats.findOne({ user: editorId });
-  let newUserPoints = 0;
-  if (userStats) {
-    newUserPoints = userStats.points + pointsTo.editArticle;
-  }else{
-    return new NextResponse("User Not Found", { status: 404 });
-  }
+  
 
   try {
     const savedArticle = await article.save();
-    if (savedArticle && newUserPoints) {
-      userStats.points += newUserPoints;
+    if (savedArticle && userStats) {
+      userStats.points += pointsTo.editArticle;
+      
       userStats.articlesEdited += 1;
       await userStats.save();
     }

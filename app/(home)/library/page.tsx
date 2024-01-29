@@ -1,8 +1,6 @@
-"use client";
 import { Skeleton } from "@/components/ui/skeleton";
 import { ObjectId } from "mongoose";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 type Result = {
   _id: ObjectId;
@@ -12,28 +10,32 @@ type Result = {
   category: string;
 };
 
-const Library = () => {
-  const [searchResults, setSearchResults] = useState<Result[]>([]);
+const fetchData = async () => {
+  // Perform the search logic here
+  let articles: any = [];
+  const response = await fetch(`http://localhost:3000/api/getArticles`, {
+    next: { revalidate: 3600 },
+    cache: "no-store",
+  });
+  if (response.status === 200) {
+    const articlesData = await response.json();
+    articles = articlesData;
+  }
 
-  useEffect(() => {
-    const handleSearch = async () => {
-      // Perform the search logic here
-      const response = await fetch(`/api/getArticles`, { next: { revalidate: 3600 } });
-      if (response.status === 200) {
-        const data = await response.json();
-        setSearchResults(data.articles);
-      }
-    };
-    handleSearch();
-  }, []);
+  return articles;
+};
+
+const Library = async () => {
+  const data = await fetchData();
+  const libraryResults = data.articles;
 
   return (
     <div className="px-24">
       <div className="mt-10">
         <div className="text-xl font-bold">Library</div>
-        <div>{searchResults.length} articles</div>
-        
-        {searchResults.map((result) => (
+        <div>{libraryResults.length} articles</div>
+
+        {libraryResults.map((result:Result) => (
           <div
             key={result._id.toString()}
             className="p-4 border-2 rounded mt-2 mb-2"

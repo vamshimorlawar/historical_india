@@ -1,134 +1,75 @@
-"use client";
-import { Button } from "@/components/ui/button";
+import ArticleCard from "@/components/ArticleCard";
+import ContibutorCard from "@/components/ContributorCard";
+import QuoteBanner from "@/components/QuoteBanner";
 import { Separator } from "@/components/ui/separator";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
-interface Article {
-  _id: string;
-  title: string;
-  // Add other properties as needed
-}
+const fetchData = async () => {
+  const newArticleOptions = { type: "new", limit: 5, skip: 0 };
+  const topArticleOptions = { type: "top", limit: 5, skip: 0 };
+  const topContributorOptions = { type: "top", limit: 5, skip: 0 };
 
-interface Contributor {
-  _id: string;
-  firstName: string;
-  points: number;
-  // Add other properties as needed
-}
+  try {
+    let newArticles: any = [];
+    let topArticles: any = [];
+    let topContributors: any = [];
+    const [newArticlesResponse, topArticlesResponse, topContributorsResponse] =
+      await Promise.all([
+        fetch(
+          `http://localhost:3000/api/getArticles?options=${JSON.stringify(
+            newArticleOptions
+          )}`
+        ),
+        fetch(
+          `http://localhost:3000/api/getArticles?options=${JSON.stringify(
+            topArticleOptions
+          )}`
+        ),
+        fetch(
+          `http://localhost:3000/api/getContributors?options=${JSON.stringify(
+            topContributorOptions
+          )}`
+        ),
+      ]);
 
-const HomePage = () => {
-  const [newArticles, setNewArticles] = useState<Article[]>([]);
-  const [topArticles, setTopArticles] = useState<Article[]>([]);
-  const [topContributors, setTopContributors] = useState<Contributor[]>([]);
+    const [newArticlesData, topArticlesData, topContributorsData] =
+      await Promise.all([
+        newArticlesResponse.json(),
+        topArticlesResponse.json(),
+        topContributorsResponse.json(),
+      ]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const newArticleOptions = { type: "new", limit: 5, skip: 0 };
-      const topArticleOptions = { type: "top", limit: 5, skip: 0 };
-      const topContributorOptions = { type: "top", limit: 5, skip: 0 };
+    newArticles = newArticlesData.articles;
+    topArticles = topArticlesData.articles;
+    topContributors = topContributorsData.contributors;
 
-      try {
-        const [
-          newArticlesResponse,
-          topArticlesResponse,
-          topContributorsResponse,
-        ] = await Promise.all([
-          fetch(`api/getArticles?options=${JSON.stringify(newArticleOptions)}`),
-          fetch(`api/getArticles?options=${JSON.stringify(topArticleOptions)}`),
-          fetch(
-            `api/getContributors?options=${JSON.stringify(
-              topContributorOptions
-            )}`
-          ),
-        ]);
+    return { topArticles, newArticles, topContributors };
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
+  }
+};
 
-        const [newArticlesData, topArticlesData, topContributorsData] =
-          await Promise.all([
-            newArticlesResponse.json(),
-            topArticlesResponse.json(),
-            topContributorsResponse.json(),
-          ]);
-
-        setNewArticles(newArticlesData.articles);
-        setTopArticles(topArticlesData.articles);
-        setTopContributors(topContributorsData.contributors);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+const HomePage = async () => {
+  const data = await fetchData();
+  const newArticles: any = data.newArticles;
+  const topArticles: any = data.topArticles;
+  const topContributors: any = data.topContributors;
 
   return (
     <div className="mb-20">
       <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]"></div>
       <div className="mt-10 px-24">
-        <div>
-          <div className="font-medium text-xl">Top Articles</div>
-          <div className="flex mt-2 gap-2">
-            {topArticles.length === 0 ? (
-              <div>No Top Articles</div>
-            ) : (
-              topArticles.map((article) => (
-                <div
-                  key={article._id}
-                  className="p-5 border-gray-600 border-2 rounded-sm"
-                >
-                  <Link href={`/article/view/${article._id.toString()}`}>
-                    {article.title}
-                  </Link>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+        <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
         <Separator className="my-4" />
-        <div>
-          <div className="font-medium text-xl">New Articles</div>
-          <div className="flex mt-2 gap-2">
-            {newArticles.length === 0 ? (
-              <div>No New Articles</div>
-            ) : (
-              newArticles.map((article) => (
-                <div
-                  key={article._id}
-                  className="p-5 border-gray-600 border-2 rounded-sm"
-                >
-                  <Link href={`/article/view/${article._id.toString()}`}>
-                    {article.title}
-                  </Link>
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+        <ArticleCard articles={newArticles} sectionTitle="New Articles" />
         <Separator className="my-4" />
-        <div>
-          <div className="font-medium text-xl">Top Contributor</div>
-          <div className="flex mt-2 gap-2">
-            {topContributors.length === 0 ? (
-              <div>No Contributors</div>
-            ) : (
-              topContributors.map((contributor) => (
-                <div
-                  key={contributor._id}
-                  className="p-5 border-gray-600 border-2 rounded-sm"
-                >
-                  {contributor.firstName}, {contributor.points}
-                </div>
-              ))
-            )}
-          </div>
-        </div>
+        <ContibutorCard
+          contributors={topContributors}
+          sectionTitle="Top Contributors"
+        />
         <Separator className="my-4" />
       </div>
-
-      <div className="flex items-center justify-center flex-col mt-10 p-20">
-        <div>historicalindia@xyz.com</div>
-        <Button className="mt-4">Create Arrticle</Button>
-      </div>
+      <QuoteBanner />
     </div>
   );
 };
