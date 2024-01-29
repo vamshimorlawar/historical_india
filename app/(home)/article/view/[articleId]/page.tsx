@@ -52,7 +52,7 @@ const ArticleViewer = ({
 
   return (
     article && (
-      <div className="p-10 md:p-20">
+      <div className="p-10 md:px-24">
         <div>
           <div className="font-bold text-2xl md:text-[36px]">
             {article.title}

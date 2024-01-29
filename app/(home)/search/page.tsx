@@ -9,6 +9,7 @@ type Result = {
   title: string;
   tagline: string;
   content: string;
+  category: string;
 };
 
 const Search = () => {
@@ -24,23 +25,29 @@ const Search = () => {
   };
 
   return (
-    <div className="p-20">
+    <div className="p-24">
       <SearchInput onSearch={handleSearch} />
-      {searchResults.length != 0 && <div className="mt-10">
-        <div>Showing Results from {searchResults.length} articles</div>
-        {searchResults.map((result) => (
-          <div
-            key={result._id.toString()}
-            className="p-4 border-2 rounded mt-2 mb-2"
-          >
-            <Link href={`/article/view/${result._id}`}>
-              <div className="font-bold text-xl">{result.title}</div>
-              <div className="text-ellipsis">{result.content.slice(0, 100)}...</div>
-              {/* You can display more information about the article */}
-            </Link>
-          </div>
-        ))}
-      </div>}
+      {searchResults.length != 0 && (
+        <div className="mt-10">
+          <div>Showing Results from {searchResults.length} articles</div>
+          {searchResults.map((result) => (
+            <div
+              key={result._id.toString()}
+              className="p-4 border-2 rounded mt-2 mb-2"
+            >
+              <Link href={`/article/view/${result._id}`}>
+                <div className="font-bold text-xl">
+                  {result.title} | {result.category}
+                </div>
+                <div className="text-ellipsis">
+                  {result.content.slice(0, 100)}...
+                </div>
+                {/* You can display more information about the article */}
+              </Link>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };

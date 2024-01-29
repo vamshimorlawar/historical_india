@@ -64,7 +64,7 @@ const HomePage = () => {
   return (
     <div className="mb-20">
       <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]"></div>
-      <div className="px-24 mt-10">
+      <div className="mt-10 px-24">
         <div>
           <div className="font-medium text-xl">Top Articles</div>
           <div className="flex mt-2 gap-2">

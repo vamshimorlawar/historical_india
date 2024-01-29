@@ -9,7 +9,7 @@ const Navbar = () => {
   const { data: session } = useSession();
   return (
     <div className="p-4 w-full">
-      <div className="flex flex-wrap gap-2 items-center justify-between max-w-screen-lg mx-auto">
+      <div className="flex flex-wrap gap-2 items-center justify-between px-24">
         <div className="flex gap-4 flex-wrap">
           <Link href="/">Home</Link>
           <Link href="/create-article">Create Article</Link>
