@@ -1,7 +1,6 @@
 // components/SearchInput.js
 import { useState } from 'react';
 import { Input } from './ui/input';
-import { Button } from './ui/button';
 
 type SearchInputProps = {
     onSearch: any
@@ -11,16 +10,15 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
 
   const handleChange = (e: any) => {
     setQuery(e.target.value);
+    onSearch(e.target.value);
   };
 
-  const handleSearch = () => {
-    onSearch(query);
-  };
+ 
 
   return (
-    <div className='flex'>
+    <div className='flex flex-col'>
       <Input type="text" className='p-10 text-xl font-bold' value={query} onChange={handleChange} placeholder='Search here'/>
-      <Button onClick={handleSearch} className='p-10 '>Search</Button>
+      <div className='mt-2 opacity-40 italic'>Try searching "India calls ..."</div>
     </div>
   );
 };

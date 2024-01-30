@@ -1,4 +1,3 @@
-import { Skeleton } from "@/components/ui/skeleton";
 import { ObjectId } from "mongoose";
 import Link from "next/link";
 
@@ -13,29 +12,41 @@ type Result = {
 const fetchData = async () => {
   // Perform the search logic here
   let articles: any = [];
+  let categories: any = [];
   const response = await fetch(`http://localhost:3000/api/getArticles`, {
     next: { revalidate: 3600 },
     cache: "no-store",
   });
   if (response.status === 200) {
     const articlesData = await response.json();
-    articles = articlesData;
+    articles = articlesData.articles;
   }
-
-  return articles;
+  const categoriesData = Array.from(
+    new Set(articles.map((result: Result) => result.category))
+  );
+  categories = categoriesData;
+  return { articles, categories };
 };
 
 const Library = async () => {
   const data = await fetchData();
   const libraryResults = data.articles;
+  const categories = data.categories;
 
   return (
     <div className="px-24">
       <div className="mt-10">
         <div className="text-xl font-bold">Library</div>
         <div>{libraryResults.length} articles</div>
-
-        {libraryResults.map((result:Result) => (
+        <div>
+          {/* {categories.map((category:any) => (
+          <div key={category}>
+            {category}
+          </div>
+        ))}
+      */}
+        </div>
+        {libraryResults.map((result: Result) => (
           <div
             key={result._id.toString()}
             className="p-4 border-2 rounded mt-2 mb-2"

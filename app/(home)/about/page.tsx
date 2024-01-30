@@ -1,7 +1,7 @@
 const AboutPage = () => {
   return (
-    <div>
-      <div className="m-4rounded-sm p-4">
+    <div className="px-24">
+      <div className="m-4 rounded-sm">
         <div className="text-xl font-medium">About</div>
         <div className="mt-2 text-sm">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. A tenetur at

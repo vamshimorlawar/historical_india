@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 interface Contributor {
@@ -26,12 +27,13 @@ const ContibutorCard: React.FC<ContributorCardProps> = ({
             <div>No {sectionTitle}</div>
           ) : (
             contributors.map((contributor) => (
-              <div
+              <Link
+                href={`/profile/${contributor._id}`}
                 key={contributor._id}
                 className="p-5 border-gray-600 border-2 rounded-sm"
               >
                 {contributor.firstName}, {contributor.points}
-              </div>
+              </Link>
             ))
           )}
         </div>

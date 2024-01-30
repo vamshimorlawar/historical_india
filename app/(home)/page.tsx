@@ -1,5 +1,7 @@
 import ArticleCard from "@/components/ArticleCard";
 import ContibutorCard from "@/components/ContributorCard";
+import ExploreBanner from "@/components/ExploreBanner";
+import Footer from "@/components/Footer";
 import QuoteBanner from "@/components/QuoteBanner";
 import { Separator } from "@/components/ui/separator";
 
@@ -56,20 +58,25 @@ const HomePage = async () => {
   const topContributors: any = data.topContributors;
 
   return (
-    <div className="mb-20">
+    <div>
       <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]"></div>
-      <div className="mt-10 px-24">
-        <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
+      <div className="my-10 px-24">
         <Separator className="my-4" />
-        <ArticleCard articles={newArticles} sectionTitle="New Articles" />
+        <div className="flex flex-wrap justify-between">
+          <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
+          <ArticleCard articles={newArticles} sectionTitle="New Articles" />
+        </div>
         <Separator className="my-4" />
+      </div>
+      <QuoteBanner />
+      <div className="flex flex-wrap px-24 my-10">
         <ContibutorCard
           contributors={topContributors}
           sectionTitle="Top Contributors"
         />
-        <Separator className="my-4" />
       </div>
-      <QuoteBanner />
+      <ExploreBanner/>
+      <Footer/>
     </div>
   );
 };

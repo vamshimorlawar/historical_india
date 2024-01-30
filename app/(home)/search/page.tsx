@@ -1,4 +1,5 @@
 "use client";
+
 import SearchInput from "@/components/SearchInput";
 import { ObjectId } from "mongoose";
 import Link from "next/link";
@@ -14,7 +15,6 @@ type Result = {
 
 const Search = () => {
   const [searchResults, setSearchResults] = useState<Result[]>([]);
-
   const handleSearch = async (query: string) => {
     // Perform the search logic here
     const response = await fetch(`/api/getArticles?query=${query}`);
@@ -27,7 +27,11 @@ const Search = () => {
   return (
     <div className="p-24">
       <SearchInput onSearch={handleSearch} />
-      {searchResults.length != 0 && (
+      {searchResults.length == 0 ? (
+        <div className="mt-10">
+          <div>No Search Results? Try <Link href="/create-article" className="link underline text-blue-400">Create Article</Link> for the topic</div>
+        </div>
+      ) : (
         <div className="mt-10">
           <div>Showing Results from {searchResults.length} articles</div>
           {searchResults.map((result) => (

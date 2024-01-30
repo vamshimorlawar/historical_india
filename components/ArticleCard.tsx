@@ -16,7 +16,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({articles, sectionTitle}) => {
   return (
     <div>
           <div className="font-medium text-xl">{sectionTitle}</div>
-          <div className="flex mt-2 gap-2">
+          <div className="flex flex-col mt-2 gap-2">
             {articles.length === 0 ? (
               <div>No {sectionTitle}</div>
             ) : (
