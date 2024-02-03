@@ -5,10 +5,10 @@ import Link from "next/link";
 
 const ExploreBanner = () => {
   return (
-    <div className="bg-orange-800 px-24 py-20 ">
+    <div className="px-24 py-20 ">
       <div className="flex flex-col justify-center items-center gap-2">
-        <div className="text-3xl font-bold text-white">Love Indian History?</div>
-        <div className="text-slate-100 text-center">
+        <div className="text-3xl font-bold">Love Indian History?</div>
+        <div className="text-center">
           Contribute to open source community project and help create
           encyclopedia of the Indian history.
         </div>

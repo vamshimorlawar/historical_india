@@ -8,9 +8,9 @@ import { Avatar, AvatarFallback } from "./ui/avatar";
 const Navbar = () => {
   const { data: session } = useSession();
   return (
-    <div className="p-4 bg-orange-800 w-full dark:bg-orange-800">
+    <div className="p-4 w-full ">
       <div className="flex flex-wrap gap-2 items-center justify-between px-24">
-        <div className="flex gap-4 flex-wrap text-white">
+        <div className="flex gap-4 flex-wrap ">
           <Link href="/">Home</Link>
           <Link href="/create-article">Create Article</Link>
           <Link href="/search">Search</Link>
@@ -20,8 +20,8 @@ const Navbar = () => {
         {!session ? (
           <>
             <div className="flex gap-4 items-center flex-wrap">
-              <Link href="/login" className="text-white">Login</Link>
-              <Link href="/sign-up" className="text-white">Signup</Link>
+              <Link href="/login" className="">Login</Link>
+              <Link href="/sign-up" className="">Signup</Link>
               <ModeToggle />
             </div>
           </>

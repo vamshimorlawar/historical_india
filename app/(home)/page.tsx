@@ -68,7 +68,7 @@ const HomePage = async () => {
 
   return (
     <div>
-      <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]"></div>
+      <div className="flex items-center justify-center flex-col w-100 h-[500px] text-5xl font-bold">Welcome to Historical India</div>
       <div className="">
         <div className="my-10 px-24">
           <div className="flex flex-wrap justify-around">

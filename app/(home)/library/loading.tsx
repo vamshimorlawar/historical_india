@@ -29,26 +29,26 @@ const loading = () => {
             <TableBody>
               <TableRow>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 bg-gray-200" />
+                  <Skeleton className="w-[100px] h-4 p-4 " />
                 </TableCell>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 bg-gray-200" />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 bg-gray-200" />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 bg-gray-200" />
+                  <Skeleton className="w-[100px] h-4 p-4 " />
                 </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 bg-gray-200" />
+                  <Skeleton className="w-[100px] h-4 p-4 " />
                 </TableCell>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 bg-gray-200" />
+                  <Skeleton className="w-[100px] h-4 p-4 " />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <Skeleton className="w-[100px] h-4 p-4 " />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="w-[100px] h-4 p-4 " />
                 </TableCell>
               </TableRow>
             </TableBody>
