@@ -15,7 +15,7 @@
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-toggle": "^1.0.3",
-    "@tanstack/react-table": "^8.11.7",
+    "@tanstack/react-table": "^8.11.8",
     "@tiptap/extension-character-count": "^2.1.16",
     "@tiptap/extension-color": "^2.1.16",
     "@tiptap/extension-highlight": "^2.1.16",

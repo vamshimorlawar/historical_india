@@ -1,5 +1,7 @@
+"use client"
 import { ObjectId } from "mongoose";
-import Link from "next/link";
+import { DataTable } from "./dataTable";
+import { columns } from "./columns";
 
 type Result = {
   _id: ObjectId;
@@ -13,7 +15,8 @@ const fetchData = async () => {
   // Perform the search logic here
   let articles: any = [];
   let categories: any = [];
-  const response = await fetch(`http://localhost:3000/api/getArticles`, {
+  const options = JSON.stringify({ skip: 0 });
+  const response = await fetch(`http://localhost:3000/api/getArticles?options=${options}`, {
     next: { revalidate: 3600 },
   });
   if (response.status === 200) {
@@ -29,38 +32,16 @@ const fetchData = async () => {
 
 const Library = async () => {
   const data = await fetchData();
-  const libraryResults = data.articles;
-  const categories = data.categories;
+  const articles = data.articles;
 
   return (
     <div className="px-24">
       <div className="mt-10">
         <div className="text-xl font-bold">Library</div>
-        <div>{libraryResults.length} articles</div>
-        <div>
-          {/* {categories.map((category:any) => (
-          <div key={category}>
-            {category}
-          </div>
-        ))}
-      */}
-        </div>
-        {libraryResults.map((result: Result) => (
-          <div
-            key={result._id.toString()}
-            className="p-4 border-2 rounded mt-2 mb-2"
-          >
-            <Link href={`/article/view/${result._id}`}>
-              <div className="font-bold text-md">
-                {result.title} | {result.category}
-              </div>
-              <div className="text-ellipsis text-sm">
-                {result.content.slice(0, 100)}...
-              </div>
-              {/* You can display more information about the article */}
-            </Link>
-          </div>
-        ))}
+        <div>{articles.length} articles</div>
+      </div>
+      <div>
+        <DataTable columns={columns} data={articles}/>
       </div>
     </div>
   );
