@@ -15,7 +15,7 @@ const fetchData = async () => {
   // Perform the search logic here
   let articles: any = [];
   let categories: any = [];
-  const options = JSON.stringify({ skip: 0 });
+  const options = JSON.stringify({ limit:100, skip: 0 });
   const response = await fetch(`http://localhost:3000/api/getArticles?options=${options}`, {
     next: { revalidate: 3600 },
   });
@@ -38,7 +38,6 @@ const Library = async () => {
     <div className="px-24">
       <div className="mt-10">
         <div className="text-xl font-bold">Library</div>
-        <div>{articles.length} articles</div>
       </div>
       <div>
         <DataTable columns={columns} data={articles}/>
