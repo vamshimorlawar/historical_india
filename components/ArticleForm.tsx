@@ -53,9 +53,12 @@ const ArticleForm = () => {
       label: "Other",
     },
   ];
+
   const [value, setValue] = useState(""); //< category
   const [open, setOpen] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const { data: session } = useSession();
 
   const handleSubmit = async (e: any) => {
@@ -64,6 +67,7 @@ const ArticleForm = () => {
     if (!session) {
       router.push("/login");
     } else {
+      setLoading(true);
       const title = e.target[0].value;
       const tagline = e.target[1].value;
       const category = value;
@@ -94,6 +98,8 @@ const ArticleForm = () => {
         }
       } catch (error) {
         setError("Internal Server Error");
+      }finally{
+        setLoading(false);
       }
     }
   };
@@ -144,7 +150,7 @@ const ArticleForm = () => {
           </Command>
         </PopoverContent>
       </Popover>
-      <Button type="submit">Create Article</Button>
+      <Button type="submit" disabled={loading}>{!loading ? "Create Article" : "Creating"}</Button>
     </form>
   );
 };
