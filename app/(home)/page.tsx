@@ -3,6 +3,7 @@ import ContibutorCard from "@/components/ContributorCard";
 import ExploreBanner from "@/components/ExploreBanner";
 import QuoteBanner from "@/components/QuoteBanner";
 import { Separator } from "@/components/ui/separator";
+import next from "next";
 
 const fetchData = async () => {
   const newArticleOptions = { type: "new", limit: 5, skip: 0 };
@@ -18,17 +19,26 @@ const fetchData = async () => {
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             newArticleOptions
-          )}`
+          )}`, 
+          {
+            next: { revalidate: 3600 },
+          }
         ),
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             topArticleOptions
-          )}`
+          )}`, 
+          {
+            next: { revalidate: 3600 },
+          }
         ),
         fetch(
           `http://localhost:3000/api/getContributors?options=${JSON.stringify(
             topContributorOptions
-          )}`
+          )}`, 
+          {
+            next: { revalidate: 3600 },
+          }
         ),
       ]);
 
