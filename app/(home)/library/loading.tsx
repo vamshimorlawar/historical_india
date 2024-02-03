@@ -12,10 +12,10 @@ import React from "react";
 
 const loading = () => {
   return (
-    <div className="px-24">
+    <div className="max-w-screen-2xl mx-auto px-10">
       <div className="mt-10">
         <div className="text-xl font-bold">Library</div>
-        <div className="flex items-center py-4">
+        <div className="flex items-center py-4 w-[300px]">
           <Input placeholder="Filter title..." />
         </div>
         <div>
@@ -29,26 +29,26 @@ const loading = () => {
             <TableBody>
               <TableRow>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 " />
+                  <Skeleton className="w-[80%] h-4 p-4 " />
                 </TableCell>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 " />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 " />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 " />
+                  <Skeleton className="w-[80%] h-4 p-4 " />
                 </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 " />
+                  <Skeleton className="w-[80%] h-4 p-4 " />
                 </TableCell>
                 <TableCell>
-                  <Skeleton className="w-[100px] h-4 p-4 " />
+                  <Skeleton className="w-[80%] h-4 p-4 " />
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableCell>
+                  <Skeleton className="w-[80%] h-4 p-4 " />
+                </TableCell>
+                <TableCell>
+                  <Skeleton className="w-[80%] h-4 p-4 " />
                 </TableCell>
               </TableRow>
             </TableBody>

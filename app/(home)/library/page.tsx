@@ -35,9 +35,9 @@ const Library = async () => {
   const articles = data.articles;
 
   return (
-    <div className="px-24">
+    <div className="max-w-screen-2xl mx-auto px-10">
       <div className="mt-10">
-        <div className="text-xl font-bold">Library</div>
+        <div className="text-2xl font-bold">Library</div>
       </div>
       <div>
         <DataTable columns={columns} data={articles}/>

@@ -61,7 +61,7 @@ const ProfilePage = () => {
                   {userData?.userStats.points}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  +Contribute more to gain mudras
+                  Contribute more to gain mudras
                 </p>
               </CardContent>
             </Card>
@@ -77,7 +77,7 @@ const ProfilePage = () => {
                   {userData?.userStats.articlesCreated}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  +We encourage you to create articles
+                  We encourage you to create articles
                 </p>
               </CardContent>
             </Card>
@@ -93,7 +93,7 @@ const ProfilePage = () => {
                   {userData?.userStats.articlesEdited}
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  +Edit articles to improve content
+                  Edit articles to improve content
                 </p>
               </CardContent>
             </Card>
@@ -105,7 +105,7 @@ const ProfilePage = () => {
               <CardContent>
                 <div className="text-2xl font-bold">2</div>
                 <p className="text-xs text-muted-foreground">
-                  +Please follow the rules
+                  Please follow the rules
                 </p>
               </CardContent>
             </Card>
