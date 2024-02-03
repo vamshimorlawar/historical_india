@@ -6,7 +6,7 @@ const HomeLayout = ({ children }: { children: React.ReactNode }) => {
     <div className="min-h-screen">
       <Navbar />
       <main>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

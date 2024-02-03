@@ -1,7 +1,6 @@
 import ArticleCard from "@/components/ArticleCard";
 import ContibutorCard from "@/components/ContributorCard";
 import ExploreBanner from "@/components/ExploreBanner";
-import Footer from "@/components/Footer";
 import QuoteBanner from "@/components/QuoteBanner";
 import { Separator } from "@/components/ui/separator";
 
@@ -76,7 +75,6 @@ const HomePage = async () => {
         />
       </div>
       <ExploreBanner/>
-      <Footer/>
     </div>
   );
 };
