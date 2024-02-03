@@ -1,9 +1,9 @@
 import ArticleCard from "@/components/ArticleCard";
 import ContibutorCard from "@/components/ContributorCard";
 import ExploreBanner from "@/components/ExploreBanner";
+import HeroBanner from "@/components/HeroBanner";
 import QuoteBanner from "@/components/QuoteBanner";
 import { Separator } from "@/components/ui/separator";
-import next from "next";
 
 const fetchData = async () => {
   const newArticleOptions = { type: "new", limit: 5, skip: 0 };
@@ -19,7 +19,7 @@ const fetchData = async () => {
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             newArticleOptions
-          )}`, 
+          )}`,
           {
             next: { revalidate: 3600 },
           }
@@ -27,7 +27,7 @@ const fetchData = async () => {
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             topArticleOptions
-          )}`, 
+          )}`,
           {
             next: { revalidate: 3600 },
           }
@@ -35,7 +35,7 @@ const fetchData = async () => {
         fetch(
           `http://localhost:3000/api/getContributors?options=${JSON.stringify(
             topContributorOptions
-          )}`, 
+          )}`,
           {
             next: { revalidate: 3600 },
           }
@@ -68,8 +68,8 @@ const HomePage = async () => {
 
   return (
     <div>
-      <div className="flex items-center justify-center flex-col w-100 h-[500px] text-5xl font-bold">Welcome to Historical India</div>
-      <div className="">
+      <HeroBanner/>
+      <div>
         <div className="my-10 px-24">
           <div className="flex flex-wrap justify-around">
             <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
