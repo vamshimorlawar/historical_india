@@ -15,7 +15,6 @@ const fetchData = async () => {
   let categories: any = [];
   const response = await fetch(`http://localhost:3000/api/getArticles`, {
     next: { revalidate: 3600 },
-    cache: "no-store",
   });
   if (response.status === 200) {
     const articlesData = await response.json();

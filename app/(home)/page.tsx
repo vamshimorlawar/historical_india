@@ -59,22 +59,23 @@ const HomePage = async () => {
   return (
     <div>
       <div className="flex items-center bg-hero bg-no-repeat bg-cover justify-center flex-col w-100 h-[500px]"></div>
-      <div className="my-10 px-24">
-        <Separator className="my-4" />
-        <div className="flex flex-wrap justify-between">
-          <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
-          <ArticleCard articles={newArticles} sectionTitle="New Articles" />
+      <div className="">
+        <div className="my-10 px-24">
+          <div className="flex flex-wrap justify-around">
+            <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
+            <ArticleCard articles={newArticles} sectionTitle="New Articles" />
+          </div>
+          <Separator className="my-4" />
         </div>
-        <Separator className="my-4" />
+        <QuoteBanner />
+        <div className="flex flex-wrap px-24 my-10">
+          <ContibutorCard
+            contributors={topContributors}
+            sectionTitle="Top Contributors"
+          />
+        </div>
+        <ExploreBanner />
       </div>
-      <QuoteBanner />
-      <div className="flex flex-wrap px-24 my-10">
-        <ContibutorCard
-          contributors={topContributors}
-          sectionTitle="Top Contributors"
-        />
-      </div>
-      <ExploreBanner/>
     </div>
   );
 };
