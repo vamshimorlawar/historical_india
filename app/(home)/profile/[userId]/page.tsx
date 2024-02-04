@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -7,6 +6,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { AwardIcon, FactoryIcon, Flag, PenIcon, PlusIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
@@ -37,7 +37,13 @@ const ProfilePage = () => {
   return (
     <div className="flex-1 space-y-4 p-8 pt-6 max-w-screen-2xl mx-auto">
       <div className="flex items-center justify-between space-y-2">
-        <h2 className="text-2xl font-bold tracking-tight">{userData?.user.firstName} {userData?.user.lastName}</h2>
+        {userData?.user.firstName ? (
+          <h2 className="text-2xl font-bold tracking-tight">
+            {userData?.user.firstName} {userData?.user.lastName}
+          </h2>
+        ) : (
+          <Skeleton className="h-5 w-[120px]" />
+        )}
       </div>
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
@@ -100,7 +106,7 @@ const ProfilePage = () => {
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Reports</CardTitle>
-                <Flag className="h-4 w-4"/>
+                <Flag className="h-4 w-4" />
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">2</div>
