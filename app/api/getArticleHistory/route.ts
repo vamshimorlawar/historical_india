@@ -4,18 +4,16 @@ import ArticleHistory from "@/model/ArticleHistory";
 import { ObjectId } from "mongoose";
 
 type ArticleHistoryType = {
-    articleId: ObjectId,
-    edits: []
-}
+  articleId: ObjectId;
+  edits: [];
+};
 
-export const GET = async (req:any, res:any) => {
+export const GET = async (req: any, res: any) => {
   if (req.method !== "GET") {
     return new NextResponse("Method not allowed", { status: 405 });
   }
 
   const articleId = await req.nextUrl.searchParams.get("articleId");
-  console.log(articleId);
-  
 
   await connectDB();
 
@@ -29,8 +27,6 @@ export const GET = async (req:any, res:any) => {
     }
 
     const edits = articleHistory.edits;
-    console.log("Ye hai edits ka array ", edits);
-    
 
     return NextResponse.json({ edits: edits }, { status: 200 });
   } catch (error: any) {

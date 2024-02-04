@@ -12,19 +12,25 @@ import {
 import React from "react";
 import { toast } from "react-toastify";
 import { diffChars } from "diff";
+import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import { redirect } from "next/navigation";
 
 interface Edit {
-  editorId: String;
-  editedBy: String;
-  oldContent: String;
-  newContent: String;
-  message: String;
+  editorId: string;
+  editedBy: string;
+  oldContent: string;
+  newContent: string;
+  message: string;
   updatedAt: Date;
 }
 
 const getHistory = async (articleId: string) => {
   const response = await fetch(
-    `http://localhost:3000/api/getArticleHistory?articleId=${articleId}`
+    `http://localhost:3000/api/getArticleHistory?articleId=${articleId}`,
+    {
+      cache: "no-cache",
+    }
   );
 
   if (response.status == 200) {
@@ -74,14 +80,14 @@ const ArticleHistory = async ({
     }
   };
 
-  const generateVisualDiff = (oldContent: String, newContent: String) => {
+  const generateVisualDiff = (oldContent: string, newContent: string) => {
     const diff = diffChars(oldContent, newContent);
 
     return diff.map((part, index) => {
       const className = part.added
-        ? "added bg-green-800"
+        ? "added bg-green-200 dark:bg-green-800"
         : part.removed
-        ? "removed bg-red-800"
+        ? "removed bg-red-200 dark:bg-red-800"
         : "unchanged";
       return (
         <span key={index} className={className}>
@@ -107,9 +113,9 @@ const ArticleHistory = async ({
                   <div className="flex">
                     <Button
                       variant="ghost"
-                      className="relative h-2 w-2 rounded-full"
+                      className="relative h-3 w-3 rounded-full"
                     >
-                      <Avatar className="h-2 w-2">
+                      <Avatar className="h-3 w-3">
                         {/* <AvatarImage src="/avatars/01.png" alt="@shadcn" /> */}
                         <AvatarFallback>
                           {edit.editedBy.charAt(0).toUpperCase()}
@@ -127,25 +133,42 @@ const ArticleHistory = async ({
 
               <div>
                 <Dialog>
-                  <DialogTrigger className="text-xs underline text-blue-800">
+                  <DialogTrigger className="text-xs underline text-blue-400">
                     View Diff
                   </DialogTrigger>
-                  <DialogContent>
+                  <DialogContent className="min-w-[60%]">
                     <DialogHeader>
-                      <DialogTitle>View Difference</DialogTitle>
+                      <DialogTitle className="text-md">
+                        {edit.message}
+                      </DialogTitle>
                       <DialogDescription>
-                        <p>Editor ID: {edit.editorId}</p>
-                        <p>Edited By: {edit.editedBy}</p>
-                        <p>Old Content:</p>
-                        <pre>{edit.oldContent}</pre>
-                        <p>New Content:</p>
-                        <pre>{edit.newContent}</pre>
-                        <p>Message: {edit.message}</p>
-                        <p>
-                          Updated: {calculateTimeDifference(edit.updatedAt)}
-                        </p>
-                        <hr />
-                        <p>{generateVisualDiff(edit.oldContent, edit.newContent)}</p>
+                        <div className="flex-1 gap-10 justify-center text-xs mt-4">
+                          <div>
+                            <p className="font-bold">Prev Content</p>
+                            <ScrollArea className="max-h-48">
+                              <Separator className="my-2" />
+                              <p
+                                className=""
+                                dangerouslySetInnerHTML={{
+                                  __html: edit.oldContent,
+                                }}
+                              />
+                            </ScrollArea>
+                          </div>
+
+                          <div className="mt-4">
+                            <p className="font-bold">After Changes</p>
+                            <ScrollArea className="max-h-48">
+                              <Separator className="my-2" />
+                              <p className="">
+                                {generateVisualDiff(
+                                  edit.oldContent,
+                                  edit.newContent
+                                )}
+                              </p>
+                            </ScrollArea>
+                          </div>
+                        </div>
                       </DialogDescription>
                     </DialogHeader>
                   </DialogContent>
