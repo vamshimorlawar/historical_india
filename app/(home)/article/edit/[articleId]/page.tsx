@@ -101,12 +101,9 @@ const ArticleEditor = ({
           <TipTap setContent={setContent} content={article.content} />
         </div>
         <div className="mt-6">
-          <div className="text-sm font-bold text-muted-foreground">
-            Save your changes
-          </div>
           <Input
             className="mt-2 max-w-[300px] md:max-w-[500px]"
-            placeholder="Explain your changes..."
+            placeholder="Tell us what you edited..."
             required
           />
           <Button className="mt-4" size="sm" onClick={saveArticle}>
