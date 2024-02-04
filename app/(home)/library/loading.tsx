@@ -12,7 +12,7 @@ import React from "react";
 
 const loading = () => {
   return (
-    <div className="max-w-screen-2xl mx-auto px-10">
+    <div className="max-w-screen-2xl mx-auto px-10 mb-20">
       <div className="mt-10">
         <div className="text-2xl font-bold">Library</div>
         <div className="flex items-center py-4 w-[300px]">

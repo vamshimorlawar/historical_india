@@ -21,7 +21,7 @@ export default async function RootLayout({
   const session = await getServerSession();
   return (
     <html lang="en" suppressHydrationWarning={true}>
-      <body className={cn(inter.className, "relative min-h-screen")} suppressHydrationWarning={true}>
+      <body className={cn(inter.className)} suppressHydrationWarning={true}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

@@ -60,6 +60,13 @@ const ArticleEditor = ({
     if (sessionStatus == "authenticated") {
       const user = session.user;
       const userId = user?.id;
+      const message = event.target[0].value;
+      if(!message){
+        toast.error("Message cant be empty", {
+          position: "top-right"
+        })
+        return;
+      }
 
       const response = await fetch("/api/saveArticle", {
         method: "POST",
@@ -73,6 +80,7 @@ const ArticleEditor = ({
           // tagline: article?.tagline,
           content: content,
           // category: article?.category,
+          message: message
         }),
       });
 
@@ -94,22 +102,24 @@ const ArticleEditor = ({
   };
   return (
     article && (
-      <div className="max-w-screen-2xl mx-auto px-10">
+      <div className="max-w-screen-2xl mx-auto px-10 mb-20">
         <ArticleHeader {...article} />
         <Separator className="mt-4" />
         <div className="mt-4 text-muted-foreground">
           <TipTap setContent={setContent} content={article.content} />
         </div>
-        <div className="mt-6">
+        <form className="mt-6" onSubmit={saveArticle}>
           <Input
             className="mt-2 max-w-[300px] md:max-w-[500px]"
             placeholder="Tell us what you edited..."
+            type="text"
+            name="message"
             required
           />
-          <Button className="mt-4" size="sm" onClick={saveArticle}>
+          <Button className="mt-4" size="sm" type="submit">
             Save Article
           </Button>
-        </div>
+        </form>
       </div>
     )
   );

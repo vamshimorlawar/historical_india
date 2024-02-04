@@ -9,7 +9,7 @@ interface HomeLayoutProps {
 
 const HomeLayout = ({ children }: HomeLayoutProps) => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col relative min-h-screen">
       <Navbar />
       <main>{children}</main>
       <Footer />

@@ -71,7 +71,7 @@ const ArticleHeader: React.FC<ArticleHeaderProps> = (article) => {
           </div>
           <div>|</div>
           <div>
-            <Link href="#" className="text-blue-500 underline">
+            <Link href={`/article/history/${article._id.toString()}`} className="text-blue-500 underline">
               View History
             </Link>
           </div>

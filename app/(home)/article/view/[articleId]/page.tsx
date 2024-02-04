@@ -40,7 +40,7 @@ const ArticleViewer = ({
 
   return (
     article && (
-      <div className="max-w-screen-2xl mx-auto px-10">
+      <div className="max-w-screen-2xl mx-auto px-10 mb-20">
         <ArticleHeader {...article}/>
         <Separator className="mt-4" />
         <div className="mt-4 tiptap text-muted-foreground" dangerouslySetInnerHTML={{__html: article.content}}/>

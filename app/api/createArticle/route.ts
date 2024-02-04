@@ -1,4 +1,5 @@
 import Article from "@/model/Article";
+import ArticleHistory from "@/model/ArticleHistory";
 import User from "@/model/User";
 import UserStats from "@/model/UserStats";
 import { connectDB } from "@/utils/db";
@@ -25,12 +26,28 @@ export const POST = async (req: any, res: NextResponse) => {
     editCount: 0,
   });
 
+  
   try {
     const savedArticle = await newArticle.save();
     if (savedArticle) {
       userStats.points += newUserPoints;
       userStats.articlesCreated += 1;
       await userStats.save();
+
+      const newEdit = {
+        editorId: user._id,
+        editedBy: user.firstName,
+        oldContent: "Init Content",
+        newContent: "Init Content",
+        message: "Article Initialized"
+      }
+      const savedArticleId = savedArticle._id;
+      const articleHistory = await ArticleHistory.findOneAndUpdate(
+        { articleId: savedArticleId },
+        { $push: { edits: newEdit } },
+        { new: true, upsert: true }
+      );
+      await articleHistory.save();
     }
 
     return NextResponse.json(

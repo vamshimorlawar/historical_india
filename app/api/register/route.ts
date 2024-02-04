@@ -3,6 +3,7 @@ import User from "@/model/User";
 import UserStats from "@/model/UserStats";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
+import pointsTo from "@/utils/points";
 
 export const POST = async (req: any) => {
   const { email, firstName, lastName, password } = await req.json();
@@ -23,10 +24,10 @@ export const POST = async (req: any) => {
 
   try {
     const savedUser = await newUser.save();
-
+    const points = pointsTo.createAccount;
     const newUserStats = new UserStats({
       user: savedUser._id,
-      points: 0,
+      points: points,
       articlesCreated: 0,
       articlesEdited: 0,
     });

@@ -25,7 +25,7 @@ const Search = () => {
   };
 
   return (
-    <div className="max-w-screen-2xl mx-auto px-10">
+    <div className="max-w-screen-2xl mx-auto px-10 mb-20">
       <div className="mt-10">
         <div className="text-2xl font-bold">Search</div>
       </div>

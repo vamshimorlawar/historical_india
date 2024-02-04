@@ -1,16 +1,19 @@
 import Article from "@/model/Article";
+import ArticleHistory from "@/model/ArticleHistory";
+import User from "@/model/User";
 import UserStats from "@/model/UserStats";
 import { connectDB } from "@/utils/db";
 import pointsTo from "@/utils/points";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: any, res: NextResponse) => {
-  const { editorId: editorId, articleId, content } = await req.json();
+  const { editorId: editorId, articleId, content, message } = await req.json();
 
   await connectDB();
 
   const article = await Article.findOne({ _id: articleId });
   
+  const oldContent = article.content;
 
   if (article) {
     article.content = content;
@@ -20,8 +23,24 @@ export const POST = async (req: any, res: NextResponse) => {
   }
 
   const userStats = await UserStats.findOne({ user: editorId });
-  
+  const user = await User.findOne({_id: editorId});
 
+  const articleHistory = await ArticleHistory.findOne({articleId: articleId});
+
+  if(articleHistory){
+    articleHistory.articleId = articleId;
+    articleHistory.edits.push({
+      editorId: editorId,
+      editedBy: user.firstName,
+      oldContent: oldContent,
+      newContent: content,
+      message: message
+    })
+  }else{
+    console.log("Article History Not Found");
+    
+  }
+  
   try {
     const savedArticle = await article.save();
     if (savedArticle && userStats) {
@@ -29,6 +48,7 @@ export const POST = async (req: any, res: NextResponse) => {
       
       userStats.articlesEdited += 1;
       await userStats.save();
+      await articleHistory.save();
     }
 
     return NextResponse.json(
