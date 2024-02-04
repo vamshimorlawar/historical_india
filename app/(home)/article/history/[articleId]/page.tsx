@@ -1,8 +1,17 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 import React from "react";
 import { toast } from "react-toastify";
+import { diffChars } from "diff";
 
 interface Edit {
   editorId: String;
@@ -65,6 +74,23 @@ const ArticleHistory = async ({
     }
   };
 
+  const generateVisualDiff = (oldContent: String, newContent: String) => {
+    const diff = diffChars(oldContent, newContent);
+
+    return diff.map((part, index) => {
+      const className = part.added
+        ? "added bg-green-800"
+        : part.removed
+        ? "removed bg-red-800"
+        : "unchanged";
+      return (
+        <span key={index} className={className}>
+          {part.value}
+        </span>
+      );
+    });
+  };
+
   return (
     <div className="max-w-screen-2xl mx-auto mb-20 p-10">
       <div className="text-2xl font-bold">History</div>
@@ -74,24 +100,57 @@ const ArticleHistory = async ({
             key={index}
             className="p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
           >
-            <div className="mb-2">{edit.message}</div>
-            <div className="flex text-xs gap-6 text-muted-foreground">
-              <div className="flex">
-                <Button
-                  variant="ghost"
-                  className="relative h-2 w-2 rounded-full"
-                >
-                  <Avatar className="h-2 w-2">
-                    {/* <AvatarImage src="/avatars/01.png" alt="@shadcn" /> */}
-                    <AvatarFallback>
-                      {edit.editedBy.charAt(0).toUpperCase()}
-                    </AvatarFallback>
-                  </Avatar>
-                </Button>
-                <div>{edit.editedBy}</div>
+            <div className="flex justify-between">
+              <div>
+                <div className="mb-2">{edit.message}</div>
+                <div className="flex text-xs gap-6 text-muted-foreground">
+                  <div className="flex">
+                    <Button
+                      variant="ghost"
+                      className="relative h-2 w-2 rounded-full"
+                    >
+                      <Avatar className="h-2 w-2">
+                        {/* <AvatarImage src="/avatars/01.png" alt="@shadcn" /> */}
+                        <AvatarFallback>
+                          {edit.editedBy.charAt(0).toUpperCase()}
+                        </AvatarFallback>
+                      </Avatar>
+                    </Button>
+                    <div>{edit.editedBy}</div>
+                  </div>
+
+                  <div>
+                    Updated at {calculateTimeDifference(edit.updatedAt)}
+                  </div>
+                </div>
               </div>
 
-              <div>Updated at {calculateTimeDifference(edit.updatedAt)}</div>
+              <div>
+                <Dialog>
+                  <DialogTrigger className="text-xs underline text-blue-800">
+                    View Diff
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>View Difference</DialogTitle>
+                      <DialogDescription>
+                        <p>Editor ID: {edit.editorId}</p>
+                        <p>Edited By: {edit.editedBy}</p>
+                        <p>Old Content:</p>
+                        <pre>{edit.oldContent}</pre>
+                        <p>New Content:</p>
+                        <pre>{edit.newContent}</pre>
+                        <p>Message: {edit.message}</p>
+                        <p>
+                          Updated: {calculateTimeDifference(edit.updatedAt)}
+                        </p>
+                        <hr />
+                        <p>{generateVisualDiff(edit.oldContent, edit.newContent)}</p>
+                      </DialogDescription>
+                    </DialogHeader>
+                  </DialogContent>
+                </Dialog>
+              </div>
             </div>
           </div>
         ))}
