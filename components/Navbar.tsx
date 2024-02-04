@@ -11,7 +11,7 @@ import { UserNav } from "./UserNav";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  const user = {...session?.user}
+  const user = { ...session?.user };
   const pathname = usePathname();
   return (
     <div className="p-4 sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -81,22 +81,22 @@ const Navbar = () => {
                 Login
               </Link>
               <Link
-                href="/sign-up"
+                href="/register"
                 className={cn(
                   "transition-colors hover:text-foreground/80",
-                  pathname?.startsWith("/sign-up")
+                  pathname?.startsWith("/register")
                     ? "text-foreground"
                     : "text-foreground/60"
                 )}
               >
-                Signup
+                Register
               </Link>
               <ModeToggle />
             </div>
           </>
         ) : (
           <div className="flex items-center gap-6">
-            <UserNav {...user}/>
+            <UserNav {...user} />
             <ModeToggle />
           </div>
         )}

@@ -69,7 +69,7 @@ const HomePage = async () => {
   return (
     <div>
       <HeroBanner/>
-      <div>
+      {/* <div>
         <div className="my-10 px-24">
           <div className="flex flex-wrap justify-around">
             <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
@@ -77,15 +77,13 @@ const HomePage = async () => {
           </div>
           <Separator className="my-4" />
         </div>
-        <QuoteBanner />
         <div className="flex flex-wrap px-24 my-10">
           <ContibutorCard
             contributors={topContributors}
             sectionTitle="Top Contributors"
           />
         </div>
-        <ExploreBanner />
-      </div>
+      </div> */}
     </div>
   );
 };

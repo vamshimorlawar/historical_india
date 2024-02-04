@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import React, { useCallback, useEffect, useMemo } from "react";
 import DOMPurify from "dompurify";
+import { Button } from "./ui/button";
 
 type MenuProps = {
   editor: Editor | null;
@@ -45,58 +46,58 @@ const Menu: React.FC<MenuProps> = ({ editor }) => {
 
   return (
     <div className="flex flex-wrap gap-2 mb-4">
-      <button
+      <Button variant="ghost"
         onClick={() => editor.chain().focus().toggleBold().run()}
         className={
           editor.isActive("bold")
-            ? "is-active border-2 border-black"
+            ? "is-active border-2 border-black dark:border-white"
             : "border-none"
         }
       >
         <BoldIcon />
-      </button>
-      <button
+      </Button>
+      <Button variant="ghost"
         onClick={() => editor.chain().focus().toggleItalic().run()}
         className={
           editor.isActive("italic")
-            ? "is-active border-2 border-black"
+            ? "is-active border-2 border-black dark:border-white"
             : "border-none"
         }
       >
         <ItalicIcon />
-      </button>
-      <button
+      </Button>
+      <Button variant="ghost"
         onClick={() => editor.chain().focus().toggleStrike().run()}
         className={
           editor.isActive("strike")
-            ? "is-active border-2 border-black"
+            ? "is-active border-2 border-black dark:border-white"
             : "border-none"
         }
       >
         <StrikethroughIcon />
-      </button>
-      <button
+      </Button>
+      <Button variant="ghost"
         onClick={setLink}
         className={
           editor.isActive("link")
-            ? "is-active border-2 border-black"
+            ? "is-active border-2 border-black dark:border-white"
             : "border-none"
         }
       >
         <Link2Icon />
-      </button>
-      <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
+      </Button>
+      <Button variant="ghost" onClick={() => editor.chain().focus().setHorizontalRule().run()}>
         HR
-      </button>
-      <button onClick={() => editor.chain().focus().setHardBreak().run()}>
+      </Button>
+      <Button variant="ghost" onClick={() => editor.chain().focus().setHardBreak().run()}>
         BR
-      </button>
-      <button onClick={() => editor.chain().focus().undo().run()}>
+      </Button>
+      <Button variant="ghost" onClick={() => editor.chain().focus().undo().run()}>
         <Undo2Icon />
-      </button>
-      <button onClick={() => editor.chain().focus().redo().run()}>
+      </Button>
+      <Button variant="ghost" onClick={() => editor.chain().focus().redo().run()}>
         <Redo2Icon />
-      </button>
+      </Button>
     </div>
   );
 };

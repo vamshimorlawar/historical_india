@@ -14,7 +14,7 @@ const loading = () => {
   return (
     <div className="max-w-screen-2xl mx-auto px-10">
       <div className="mt-10">
-        <div className="text-xl font-bold">Library</div>
+        <div className="text-2xl font-bold">Library</div>
         <div className="flex items-center py-4 w-[300px]">
           <Input placeholder="Filter title..." />
         </div>
@@ -23,6 +23,7 @@ const loading = () => {
             <TableHeader>
               <TableRow>
                 <TableHead>Title</TableHead>
+                <TableHead>Tagline</TableHead>
                 <TableHead>Category</TableHead>
               </TableRow>
             </TableHeader>
@@ -34,6 +35,9 @@ const loading = () => {
                 <TableCell>
                   <Skeleton className="w-[80%] h-4 p-4 " />
                 </TableCell>
+                <TableCell>
+                  <Skeleton className="w-[80%] h-4 p-4 " />
+                </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell>
@@ -42,8 +46,14 @@ const loading = () => {
                 <TableCell>
                   <Skeleton className="w-[80%] h-4 p-4 " />
                 </TableCell>
+                <TableCell>
+                  <Skeleton className="w-[80%] h-4 p-4 " />
+                </TableCell>
               </TableRow>
               <TableRow>
+                <TableCell>
+                  <Skeleton className="w-[80%] h-4 p-4 " />
+                </TableCell>
                 <TableCell>
                   <Skeleton className="w-[80%] h-4 p-4 " />
                 </TableCell>

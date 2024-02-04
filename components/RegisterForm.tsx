@@ -5,7 +5,7 @@ import { Input } from "./ui/input";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-const SignupForm = () => {
+const RegisterForm = () => {
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
 
@@ -35,7 +35,7 @@ const SignupForm = () => {
       return;
     }
     try {
-      const response = await fetch("/api/signup", {
+      const response = await fetch("/api/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -90,12 +90,10 @@ const SignupForm = () => {
           required
         />
         <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
-        <Button type="submit">
-          Signup
-        </Button>
+        <Button type="submit">Register</Button>
       </form>
     )
   );
 };
 
-export default SignupForm;
+export default RegisterForm;

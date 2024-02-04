@@ -16,9 +16,8 @@ const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
  
 
   return (
-    <div className='flex flex-col'>
-      <Input type="text" className='p-10 text-xl font-bold' value={query} onChange={handleChange} placeholder='Search here'/>
-      <div className='mt-2 opacity-40 italic'>Try searching "India calls ..."</div>
+    <div className='flex flex-col max-w-[300px] md:max-w-[500px]'>
+      <Input type="text" className='p-4' value={query} onChange={handleChange} placeholder='Enter your query here...'/>
     </div>
   );
 };

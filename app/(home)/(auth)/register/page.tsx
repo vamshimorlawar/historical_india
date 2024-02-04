@@ -1,11 +1,12 @@
-import SignupForm from "@/components/SignupForm";
+
+import RegisterForm from "@/components/RegisterForm";
 import Link from "next/link";
 
-const SignupPage = () => {
+const RegisterPage = () => {
   return (
-    <div className="m-40 max-w-screen-sm">
+    <div className="mt-32 ml-32 max-w-screen-sm">
       <div className="mb-4">Register</div>
-      <SignupForm />
+      <RegisterForm />
       <div className="text-xs mt-2">
         Already have an account?{" "}
         <Link href="/login" className="text-slate-500 underline">
@@ -16,4 +17,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default RegisterPage;

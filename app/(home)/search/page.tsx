@@ -25,11 +25,25 @@ const Search = () => {
   };
 
   return (
-    <div className="p-24">
-      <SearchInput onSearch={handleSearch} />
+    <div className="max-w-screen-2xl mx-auto px-10">
+      <div className="mt-10">
+        <div className="text-2xl font-bold">Search</div>
+      </div>
+      <div className="mt-4">
+        <SearchInput onSearch={handleSearch} />
+      </div>
       {searchResults.length == 0 ? (
-        <div className="mt-10">
-          <div>No Search Results? Try <Link href="/create-article" className="link underline text-blue-400">Create Article</Link> for the topic</div>
+        <div className="mt-10 text-muted-foreground text-sm">
+          <div>
+            No Search Results? Try{" "}
+            <Link
+              href="/create-article"
+              className="link underline text-blue-400"
+            >
+              Create Article
+            </Link>{" "}
+            for the topic
+          </div>
         </div>
       ) : (
         <div className="mt-10">

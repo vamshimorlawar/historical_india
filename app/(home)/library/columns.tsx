@@ -24,6 +24,10 @@ export const columns: ColumnDef<Article>[] = [
     header: () => <div className="font-bold">Title</div>,
   },
   {
+    accessorKey: "tagline",
+    header: () => <div className="font-bold">Tagline</div>,
+  },
+  {
     accessorKey: "category",
     header: () => <div className="font-bold">Category</div>,
   },

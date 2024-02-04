@@ -4,20 +4,11 @@ import Guidelines from "./_components/guidelines";
 
 const CreateArticlePage = () => {
   return (
-    <div className="mt-10 mb-20">
-      <div className="flex justify-center">
-        <Image
-          src="/historical_india.png"
-          alt="historical india"
-          width={500}
-          height={500}
-          priority={false}
-        />
-      </div>
-      <div className="flex justify-center gap-6 mt-10">
+    <div className="max-w-screen-2xl mx-auto px-10 mb-20">
+      <div className="flex flex-wrap justify-center gap-6 mt-10">
         <Guidelines/>
-        <div className="w-[50%]">
-          <div className="font-bold text-xl mt-4 mb-4">
+        <div className="w-full md:w-[50%]">
+          <div className="font-bold text-2xl mt-4 mb-4">
             Create New Article
           </div>
           <ArticleForm/>
