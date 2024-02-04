@@ -106,9 +106,9 @@ const ArticleHistory = async ({
             key={index}
             className="p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
           >
-            <div className="flex justify-between">
+            <div className="flex flex-wrap justify-between">
               <div>
-                <div className="mb-2">{edit.message}</div>
+                <div className="mb-2 text-sm md:text-md">{edit.message}</div>
                 <div className="flex text-xs gap-6 text-muted-foreground">
                   <div className="flex">
                     <Button

@@ -51,15 +51,18 @@ const Search = () => {
           {searchResults.map((result) => (
             <div
               key={result._id.toString()}
-              className="p-4 border-2 rounded mt-2 mb-2"
+              className="p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hover:animate-bounce"
             >
               <Link href={`/article/view/${result._id}`}>
-                <div className="font-bold text-xl">
+                <div className="">
                   {result.title} | {result.category}
                 </div>
-                <div className="text-ellipsis">
-                  {result.content.slice(0, 100)}...
-                </div>
+                {/* <div
+                  className="text-ellipsis"
+                  dangerouslySetInnerHTML={{
+                    __html: result.content.slice(0, 100),
+                  }}
+                /> */}
                 {/* You can display more information about the article */}
               </Link>
             </div>
