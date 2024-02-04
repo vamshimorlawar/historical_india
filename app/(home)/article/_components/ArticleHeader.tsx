@@ -69,6 +69,12 @@ const ArticleHeader: React.FC<ArticleHeaderProps> = (article) => {
           <div>
             Updated At: <span>{formatTimestamp(article.updatedAt)}</span>
           </div>
+          <div>|</div>
+          <div>
+            <Link href="#" className="text-blue-500 underline">
+              View History
+            </Link>
+          </div>
         </div>
       </div>
     </div>

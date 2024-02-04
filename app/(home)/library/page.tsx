@@ -1,4 +1,4 @@
-"use client"
+
 import { ObjectId } from "mongoose";
 import { DataTable } from "./dataTable";
 import { columns } from "./columns";

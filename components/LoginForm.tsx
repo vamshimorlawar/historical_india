@@ -5,6 +5,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useRouter } from "next/navigation";
 import { signIn, useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 const LoginForm = () => {
   const router = useRouter();
@@ -15,6 +16,9 @@ const LoginForm = () => {
       const user = session.user;
       const userId = user?.id;
       router.replace(`/profile/${userId}`);
+      toast.success("Login Successful!", {
+        position: "top-right",
+      });
     }
   }, [sessionStatus, router]);
 
@@ -40,40 +44,45 @@ const LoginForm = () => {
     const email = formData.email;
     const password = formData.password;
 
-    const res = await signIn("credentials", {
-      redirect: false,
-      email,
-      password,
-    });
-
-    console.log("res ", res);
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email,
+        password,
+      });
+      if(res?.status == 401){
+        toast.error("Please check your credentials", {
+          position: "top-right"
+        })
+      }
+    } catch (error) {
+      console.log(error);
+      
+    }
   };
 
   return (
-    sessionStatus !== "authenticated" && (
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
-        <Button type="submit">
-          Login
-        </Button>
-      </form>
-    )
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
+      <Input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={formData.password}
+        onChange={handleChange}
+        required
+      />
+      <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
+      {sessionStatus != "authenticated" ? <Button type="submit">Login</Button> : <Button type="submit" disabled>Logging in...</Button>}
+      
+    </form>
   );
 };
 

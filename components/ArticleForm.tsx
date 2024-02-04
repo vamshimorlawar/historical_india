@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
 
 const ArticleForm = () => {
   const router = useRouter();
@@ -93,6 +94,9 @@ const ArticleForm = () => {
         const data = await response.json();
         if (response.status == 200) {
           router.push(`/article/edit/${data.articleId}`);
+          toast.success("Success!", {
+            position: 'top-right'
+          })
         } else {
           setError("Error in Creating Article");
         }
@@ -150,7 +154,7 @@ const ArticleForm = () => {
           </Command>
         </PopoverContent>
       </Popover>
-      <Button type="submit" disabled={loading}>{!loading ? "Create Article" : "Creating"}</Button>
+      <Button type="submit" disabled={loading}>{!loading ? "Create Article" : "Creating..."}</Button>
     </form>
   );
 };

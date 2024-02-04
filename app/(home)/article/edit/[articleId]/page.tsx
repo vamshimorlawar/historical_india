@@ -5,10 +5,11 @@ import { Separator } from "@/components/ui/separator";
 import { ObjectId } from "mongoose";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import ArticleHeader from "../../_components/ArticleHeader";
 import { Input } from "@/components/ui/input";
+import { toast } from 'react-toastify';
 
 interface Article {
   _id: ObjectId;
@@ -34,8 +35,15 @@ const ArticleEditor = ({
   const [content, setContent] = useState("");
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
+  
 
   useEffect(() => {
+    if (!session) {
+      toast.info("Please login to edit article", {
+         position: 'top-right'
+       })
+     redirect("/login");
+   }
     const fetchArticle = async () => {
       const response = await fetch(`/api/getArticle?id=${params.articleId}`);
       const data = await response.json();
@@ -70,11 +78,18 @@ const ArticleEditor = ({
 
       if (response.status == 200) {
         router.push("/article/view/" + params.articleId);
+        toast.success("Success!", {
+          position: 'top-right'
+        })
       } else {
-        console.log("Unable to save article");
+        toast.error("Error saving article", {
+          position: 'top-right'
+        })
       }
     } else {
-      alert("Please login to edit article");
+      toast.info("Please login to edit article", {
+        position: 'top-right'
+      })
     }
   };
   return (

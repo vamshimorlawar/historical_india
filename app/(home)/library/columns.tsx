@@ -1,3 +1,4 @@
+"use client"
 import { ObjectId } from "mongoose";
 import { ColumnDef } from "@tanstack/react-table";
 import {
