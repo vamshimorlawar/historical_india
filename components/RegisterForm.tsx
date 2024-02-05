@@ -44,7 +44,6 @@ const RegisterForm = () => {
       });
 
       if (response.status == 200) {
-        console.log("User Registered Successfully");
         router.push("/login");
       } else {
         setErrorMessage("Error in user registration");
@@ -55,44 +54,49 @@ const RegisterForm = () => {
   };
 
   return (
-    sessionStatus !== "authenticated" && (
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
-        <Input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={handleChange}
-          required
-        />
-        <Input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-        />
-        <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 item-center">
+      <Input
+        type="email"
+        name="email"
+        placeholder="Email"
+        value={formData.email}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        value={formData.firstName}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        value={formData.lastName}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={formData.password}
+        onChange={handleChange}
+        required
+      />
+      <p className="text-red-600 text-xs">{errorMessage && errorMessage}</p>
+      {sessionStatus != "authenticated" ? (
         <Button type="submit">Register</Button>
-      </form>
-    )
+      ) : (
+        <Button type="submit" disabled>
+          {" "}
+          Adding yo...
+        </Button>
+      )}
+    </form>
   );
 };
 
