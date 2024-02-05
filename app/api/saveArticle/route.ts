@@ -1,6 +1,7 @@
 import Article from "@/model/Article";
 import ArticleHistory from "@/model/ArticleHistory";
 import User from "@/model/User";
+import UserHistory from "@/model/UserHistory";
 import UserStats from "@/model/UserStats";
 import { connectDB } from "@/utils/db";
 import pointsTo from "@/utils/points";
@@ -38,7 +39,20 @@ export const POST = async (req: any, res: NextResponse) => {
     })
   }else{
     console.log("Article History Not Found");
-    
+  }
+
+  const userHistory = await UserHistory.findOne({userId: editorId});
+
+  if(userHistory){
+    userHistory.articles.edited.push({
+      articleId: articleId,
+      oldContent: oldContent,
+      newContent: content,
+      message: message,
+      updatedAt: new Date(),
+    })
+  }else{
+    console.log("User History not found");
   }
   
   try {
@@ -49,6 +63,7 @@ export const POST = async (req: any, res: NextResponse) => {
       userStats.articlesEdited += 1;
       await userStats.save();
       await articleHistory.save();
+      await userHistory.save();
     }
 
     return NextResponse.json(

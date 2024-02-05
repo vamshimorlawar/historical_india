@@ -1,6 +1,7 @@
 import Article from "@/model/Article";
 import ArticleHistory from "@/model/ArticleHistory";
 import User from "@/model/User";
+import UserHistory from "@/model/UserHistory";
 import UserStats from "@/model/UserStats";
 import { connectDB } from "@/utils/db";
 import pointsTo from "@/utils/points";
@@ -48,6 +49,23 @@ export const POST = async (req: any, res: NextResponse) => {
         { new: true, upsert: true }
       );
       await articleHistory.save();
+
+      const userHistory = await UserHistory.findOneAndUpdate(
+        { userId: creatorId },
+        {
+          $push: {
+            'articles.created': {
+              articleId: savedArticleId,
+              oldContent: "Init Content",
+              newContent: "Init Content",
+              message: "Article Initialized",
+              updatedAt: new Date(),
+            },
+          },
+        },
+        { new: true, upsert: true }
+      );
+      await userHistory.save();
     }
 
     return NextResponse.json(
