@@ -31,7 +31,7 @@ export const POST = async (req: any, res: NextResponse) => {
   try {
     const savedArticle = await newArticle.save();
     if (savedArticle) {
-      userStats.points += newUserPoints;
+      userStats.points = newUserPoints;
       userStats.articlesCreated += 1;
       await userStats.save();
 
@@ -56,6 +56,7 @@ export const POST = async (req: any, res: NextResponse) => {
           $push: {
             'articles.created': {
               articleId: savedArticleId,
+              articleTitle: title,
               oldContent: "Init Content",
               newContent: "Init Content",
               message: "Article Initialized",
