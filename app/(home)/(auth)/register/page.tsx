@@ -4,7 +4,8 @@ import Link from "next/link";
 
 const RegisterPage = () => {
   return (
-    <div className="mt-32 ml-32 max-w-screen-sm">
+    <div className="max-w-screen-2xl mx-auto p-10 mb-20">
+    <div className="md:w-[40%]">
       <div className="mb-4">Register</div>
       <RegisterForm />
       <div className="text-xs mt-2">
@@ -13,6 +14,7 @@ const RegisterPage = () => {
           Login Here
         </Link>
       </div>
+    </div>
     </div>
   );
 };
