@@ -6,6 +6,7 @@ interface UserHistoryDocument extends Document {
     edited: [
       {
         articleId: { type: mongoose.Schema.Types.ObjectId };
+        articleTitle: { type: String };
         oldContent: { type: String };
         newContent: { type: String };
         message: { type: String };
@@ -16,6 +17,7 @@ interface UserHistoryDocument extends Document {
     created: [
       {
         articleId: { type: mongoose.Schema.Types.ObjectId };
+        articleTitle: { type: String };
         oldContent: { type: String };
         newContent: { type: String };
         message: { type: String };
@@ -31,6 +33,7 @@ const userHistorySchema = new Schema<UserHistoryDocument>({
     edited: [
       {
         articleId: { type: mongoose.Schema.Types.ObjectId },
+        articleTitle: { type: String },
         oldContent: { type: String },
         newContent: { type: String },
         message: { type: String },
@@ -40,6 +43,7 @@ const userHistorySchema = new Schema<UserHistoryDocument>({
     created: [
       {
         articleId: { type: mongoose.Schema.Types.ObjectId },
+        articleTitle: { type: String },
         oldContent: { type: String },
         newContent: { type: String },
         message: { type: String },
@@ -49,4 +53,5 @@ const userHistorySchema = new Schema<UserHistoryDocument>({
   },
 });
 
-export default mongoose.models.UserHistory || model<UserHistoryDocument>("UserHistory", userHistorySchema);
+export default mongoose.models.UserHistory ||
+  model<UserHistoryDocument>("UserHistory", userHistorySchema);

@@ -46,6 +46,7 @@ export const POST = async (req: any, res: NextResponse) => {
   if(userHistory){
     userHistory.articles.edited.push({
       articleId: articleId,
+      articleTitle: article.title,
       oldContent: oldContent,
       newContent: content,
       message: message,

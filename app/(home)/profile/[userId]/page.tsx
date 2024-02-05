@@ -5,13 +5,18 @@ import { useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import Overview from "../_components/Overview";
+import ArticleActivity from "../_components/ArticleActivity";
 
-const ProfilePage = () => {
+const ProfilePage = ({ params }: { params: { userId: string } }) => {
   const { data: session } = useSession();
   if (!session) {
     redirect("/");
   }
+
   const [userData, setUserData] = useState<any>();
+  const [createdArticles, setCreatedArticles] = useState([]);
+  const [editedArticles, setEditedArticles] = useState([]);
+
   const email = session.user?.email;
 
   useEffect(() => {
@@ -25,6 +30,21 @@ const ProfilePage = () => {
       }
     };
     fetchUserData();
+
+    const fetchArticleActivity = async () => {
+      try {
+        const response = await fetch(
+          `/api/getUserHistory?userId=${params.userId}`
+        );
+        const data = await response.json();
+        setCreatedArticles(data.createdArticles);
+        setEditedArticles(data.editedArticles);        
+      } catch (error) {
+        // it is created when article is created;
+        console.log("Error fetching article activity", error);
+      }
+    };
+    fetchArticleActivity();
   }, []);
 
   return (
@@ -41,22 +61,17 @@ const ProfilePage = () => {
       <Tabs defaultValue="overview" className="space-y-4">
         <TabsList>
           <TabsTrigger value="overview">Overview</TabsTrigger>
-          <TabsTrigger value="created">
-            Articles Created
-          </TabsTrigger>
-          <TabsTrigger value="edited">
-            Articles Edited
-          </TabsTrigger>
-          
+          <TabsTrigger value="created">Articles Created</TabsTrigger>
+          <TabsTrigger value="edited">Articles Edited</TabsTrigger>
         </TabsList>
         <TabsContent value="overview" className="space-y-4">
-          <Overview {...userData?.userStats}/>
+          <Overview {...userData?.userStats} />
         </TabsContent>
         <TabsContent value="created" className="space-y-4">
-          Article Created
+          <ArticleActivity articles={createdArticles} type={"Created"}/>
         </TabsContent>
         <TabsContent value="edited" className="space-y-4">
-          Article Edited
+          <ArticleActivity articles={editedArticles} type={"Edited"}/>
         </TabsContent>
       </Tabs>
     </div>
