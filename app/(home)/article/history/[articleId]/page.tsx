@@ -1,4 +1,8 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import React from "react";
+import { toast } from "react-toastify";
+import { calculateTimeDifference } from "@/lib/utils";
+import { generateVisualDiff } from "@/components/ViewDiff";
+
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -8,14 +12,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-
-import React from "react";
-import { toast } from "react-toastify";
-
 import { Separator } from "@/components/ui/separator";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { calculateTimeDifference } from "@/lib/utils";
-import { generateVisualDiff } from "@/components/ViewDiff";
 
 interface Edit {
   editorId: string;
@@ -103,7 +102,7 @@ const ArticleHistory = async ({
                         <div className="flex-1 gap-10 justify-center text-xs mt-4">
                           <div>
                             <p className="font-bold">Prev Content</p>
-                            <ScrollArea className="max-h-48">
+                            <ScrollArea className="h-48">
                               <Separator className="my-2" />
                               <p
                                 className=""
@@ -116,7 +115,7 @@ const ArticleHistory = async ({
 
                           <div className="mt-4">
                             <p className="font-bold">After Changes</p>
-                            <ScrollArea className="max-h-48">
+                            <ScrollArea className="h-48">
                               <Separator className="my-2" />
                               <p className="">
                                 {generateVisualDiff(
