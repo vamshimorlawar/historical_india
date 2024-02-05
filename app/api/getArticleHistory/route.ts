@@ -1,12 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { connectDB } from "@/utils/db";
 import ArticleHistory from "@/model/ArticleHistory";
-import { ObjectId } from "mongoose";
 
-type ArticleHistoryType = {
-  articleId: ObjectId;
-  edits: [];
-};
 
 export const GET = async (req: any, res: any) => {
   if (req.method !== "GET") {
