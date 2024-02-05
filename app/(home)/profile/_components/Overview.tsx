@@ -19,9 +19,9 @@ const Overview: React.FC<OverviewProps> = (userStats) => {
     <div>
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-            <CardTitle className="text-sm font-medium">Mudras</CardTitle>
+          <CardHeader className="flex flex-row items-center space-y-0 pb-2">
             <AwardIcon className="h-4 w-4" />
+            <CardTitle className="text-sm font-medium">Mudras</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -33,11 +33,11 @@ const Overview: React.FC<OverviewProps> = (userStats) => {
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center space-y-0 pb-2">
+            <PlusIcon className="h-4 w-4" />
             <CardTitle className="text-sm font-medium">
               Articles Created
             </CardTitle>
-            <PlusIcon className="h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -49,11 +49,11 @@ const Overview: React.FC<OverviewProps> = (userStats) => {
           </CardContent>
         </Card>
         <Card>
-          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardHeader className="flex flex-row items-center space-y-0 pb-2">
+            <PenIcon className="h-4 w-4" />
             <CardTitle className="text-sm font-medium">
               Articles Edited
             </CardTitle>
-            <PenIcon className="h-4 w-4" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -64,7 +64,7 @@ const Overview: React.FC<OverviewProps> = (userStats) => {
             </p>
           </CardContent>
         </Card>
-        <Card>
+        {/* <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Reports</CardTitle>
             <Flag className="h-4 w-4" />
@@ -75,7 +75,7 @@ const Overview: React.FC<OverviewProps> = (userStats) => {
               Please follow the rules
             </p>
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
     </div>
   );

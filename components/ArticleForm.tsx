@@ -96,14 +96,13 @@ const ArticleForm = () => {
           router.push(`/article/edit/${data.articleId}`);
           toast.success("Success!", {
             position: 'top-right'
-          })
+          });
+          setLoading(false);
         } else {
           setError("Error in Creating Article");
         }
       } catch (error) {
         setError("Internal Server Error");
-      }finally{
-        setLoading(false);
       }
     }
   };

@@ -37,8 +37,8 @@ const ProfilePage = ({ params }: { params: { userId: string } }) => {
           `/api/getUserHistory?userId=${params.userId}`
         );
         const data = await response.json();
-        setCreatedArticles(data.createdArticles);
-        setEditedArticles(data.editedArticles);        
+        setCreatedArticles(data.createdArticles.reverse());
+        setEditedArticles(data.editedArticles.reverse());        
       } catch (error) {
         // it is created when article is created;
         console.log("Error fetching article activity", error);

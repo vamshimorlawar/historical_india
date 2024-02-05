@@ -51,7 +51,7 @@ const Search = () => {
           {searchResults.map((result) => (
             <div
               key={result._id.toString()}
-              className="p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hover:animate-bounce"
+              className="p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hover:underline"
             >
               <Link href={`/article/view/${result._id}`}>
                 <div className="">

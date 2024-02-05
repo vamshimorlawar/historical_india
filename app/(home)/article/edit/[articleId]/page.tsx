@@ -33,6 +33,7 @@ const ArticleEditor = ({
 }) => {
   const [article, setArticle] = useState<Article | null>(null);
   const [content, setContent] = useState("");
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { data: session, status: sessionStatus } = useSession();
   
@@ -57,6 +58,7 @@ const ArticleEditor = ({
 
   const saveArticle = async (event: any) => {
     event?.preventDefault();
+    setLoading(true);
     if (sessionStatus == "authenticated") {
       const user = session.user;
       const userId = user?.id;
@@ -99,6 +101,7 @@ const ArticleEditor = ({
         position: 'top-right'
       })
     }
+    setLoading(false);
   };
   return (
     article && (
@@ -116,9 +119,8 @@ const ArticleEditor = ({
             name="message"
             required
           />
-          <Button className="mt-4" size="sm" type="submit">
-            Save Article
-          </Button>
+               <Button type="submit" className="mt-4" size="sm" disabled={loading}>{!loading ? "Save Article" : "Saving..."}</Button>
+
         </form>
       </div>
     )

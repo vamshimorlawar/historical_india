@@ -41,7 +41,7 @@ export const POST = async (req: any, res: NextResponse) => {
     console.log("Article History Not Found");
   }
 
-  const userHistory = await UserHistory.findOne({userId: editorId});
+  const userHistory = await UserHistory.findOneAndUpdate({userId: editorId});
 
   if(userHistory){
     userHistory.articles.edited.push({
