@@ -69,6 +69,11 @@ const HomePage = async () => {
   return (
     <div>
       <HeroBanner/>
+      <div className="flex flex-wrap mt-10 justify-center items-center">
+      <ArticleCard articles={ topArticles} sectionTitle="Top Articles"/>
+      <ArticleCard articles={newArticles} sectionTitle="New Articles" />
+      </div>
+
       {/* <div>
         <div className="my-10 px-24">
           <div className="flex flex-wrap justify-around">

@@ -1,7 +1,6 @@
 import React from "react";
 import { toast } from "react-toastify";
-import { calculateTimeDifference } from "@/lib/utils";
-import { generateVisualDiff } from "@/components/ViewDiff";
+import { calculateTimeDifference, generateVisualDiff } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -61,7 +60,7 @@ const ArticleHistory = async ({
         {edits.map((edit: Edit, index: number) => (
           <div
             key={index}
-            className="p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
+            className="p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hover:shadow-lg hover:shadow-foreground/40"
           >
             <div className="flex flex-wrap justify-between">
               <div>
@@ -117,12 +116,14 @@ const ArticleHistory = async ({
                             <p className="font-bold">After Changes</p>
                             <ScrollArea className="h-48">
                               <Separator className="my-2" />
-                              <p className="">
-                                {generateVisualDiff(
+                              <p className="" dangerouslySetInnerHTML={{
+                                __html: generateVisualDiff(
                                   edit.oldContent,
                                   edit.newContent
-                                )}
-                              </p>
+                                ) 
+                              }}/>
+                                {}
+                              
                             </ScrollArea>
                           </div>
                         </div>

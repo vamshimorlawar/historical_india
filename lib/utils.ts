@@ -1,5 +1,7 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { diffChars } from "diff";
+
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -31,4 +33,20 @@ export const calculateTimeDifference = (updatedAt: Date) => {
   } else {
     return seconds === 1 ? "1 second ago" : `${seconds} seconds ago`;
   }
+};
+
+
+export const generateVisualDiff = (oldContent: string, newContent: string) => {
+    const diff = diffChars(oldContent, newContent);
+  
+    let result = '';
+    diff.forEach(part => {
+        if (part.added || part.removed) {
+            result += `<span class="${part.added ? 'added bg-green-200 dark:bg-green-800' : 'removed bg-red-200 dark:bg-red-800'}">${part.value}</span>`;
+        } else {
+            result += part.value;
+        }
+    });
+
+    return result;
 };
