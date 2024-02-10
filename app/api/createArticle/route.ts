@@ -8,7 +8,7 @@ import pointsTo from "@/utils/points";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: any, res: NextResponse) => {
-  const { email, title, tagline, category } = await req.json();
+  const { email, title, tagline, category, tags } = await req.json();
 
   await connectDB();
 
@@ -25,6 +25,7 @@ export const POST = async (req: any, res: NextResponse) => {
     tagline,
     category,
     editCount: 0,
+    tags: tags
   });
 
   

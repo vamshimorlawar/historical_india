@@ -8,6 +8,7 @@ interface ArticleDocument extends Document {
   category: String;
   editCount: Number;
   content: String;
+  tags: String[];
 }
 
 const ArticleSchema = new mongoose.Schema(
@@ -19,6 +20,7 @@ const ArticleSchema = new mongoose.Schema(
     category: { type: String },
     editCount: { type: Number, default: 0 },
     content: { type: String, default: "Init Content" },
+    tags: { type: Array<String>}
   },
   { timestamps: true }
 );

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import Tags from "./Tags";
 
 interface Article {
   _id: string;
@@ -8,6 +9,7 @@ interface Article {
   tagline: string;
   content: string;
   category: string;
+  tags: string[];
   // Add other properties as needed
 }
 
@@ -46,6 +48,7 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
                       <div>| {article.category}</div>
                     </div>
                     <div>{article.tagline}</div>
+                    <Tags tags={article.tags}/>
                   </div>
                 </div>
               </Link>

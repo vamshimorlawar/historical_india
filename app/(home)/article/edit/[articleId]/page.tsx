@@ -22,6 +22,7 @@ interface Article {
   editCount: string;
   createdAt: string;
   updatedAt: string;
+  tags: string[];
 }
 
 const ArticleEditor = ({

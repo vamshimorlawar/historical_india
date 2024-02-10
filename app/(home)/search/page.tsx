@@ -1,6 +1,8 @@
 "use client";
 
 import SearchInput from "@/components/SearchInput";
+import Tags from "@/components/Tags";
+import { Badge } from "@/components/ui/badge";
 import { ObjectId } from "mongoose";
 import Link from "next/link";
 import { useState } from "react";
@@ -11,6 +13,7 @@ type Result = {
   tagline: string;
   content: string;
   category: string;
+  tags: string[];
 };
 
 const Search = () => {
@@ -57,6 +60,7 @@ const Search = () => {
                 <div className="">
                   {result.title} | {result.category}
                 </div>
+                <Tags tags={result.tags} />
                 {/* <div
                   className="text-ellipsis"
                   dangerouslySetInnerHTML={{

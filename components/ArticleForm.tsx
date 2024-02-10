@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 const ArticleForm = () => {
   const router = useRouter();
@@ -73,6 +73,11 @@ const ArticleForm = () => {
       const tagline = e.target[1].value;
       const category = value;
       const email = session.user?.email;
+      const tag_1 = e.target[3].value;
+      const tag_2 = e.target[4].value;
+      const tag_3 = e.target[5].value;
+
+      const tags = [tag_1, tag_2, tag_3];
 
       // validation for article form data here;
 
@@ -81,6 +86,7 @@ const ArticleForm = () => {
         title,
         tagline,
         category,
+        tags,
       };
 
       try {
@@ -95,7 +101,7 @@ const ArticleForm = () => {
         if (response.status == 200) {
           router.push(`/article/edit/${data.articleId}`);
           toast.success("Success!", {
-            position: 'top-right'
+            position: "top-right",
           });
           setLoading(false);
         } else {
@@ -153,7 +159,17 @@ const ArticleForm = () => {
           </Command>
         </PopoverContent>
       </Popover>
-      <Button type="submit" disabled={loading}>{!loading ? "Create Article" : "Creating..."}</Button>
+      <div className="text-xs text-muted-foreground mt-4">
+        Please enter three tags relevant to your article &gt;
+      </div>
+      <div className="flex gap-2">
+        <Input type="text" name="tag_1" placeholder="Tag 1" required />
+        <Input type="text" name="tag_2" placeholder="Tag 2" required />
+        <Input type="text" name="tag_3" placeholder="Tag 3" required />
+      </div>
+      <Button type="submit" disabled={loading}>
+        {!loading ? "Create Article" : "Creating..."}
+      </Button>
     </form>
   );
 };

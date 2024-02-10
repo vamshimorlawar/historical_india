@@ -1,3 +1,5 @@
+import Tags from "@/components/Tags";
+import { Badge } from "@/components/ui/badge";
 import { ObjectId } from "mongoose";
 import Link from "next/link";
 import React from "react";
@@ -13,6 +15,7 @@ type ArticleHeaderProps = {
   editCount: string;
   createdAt: string;
   updatedAt: string;
+  tags: string[];
 };
 
 const ArticleHeader: React.FC<ArticleHeaderProps> = (article) => {
@@ -34,6 +37,7 @@ const ArticleHeader: React.FC<ArticleHeaderProps> = (article) => {
           {article.title}
           <span className="font-light">: {article.tagline}</span>
         </div>
+        <Tags tags={article.tags}/>
         <div className="flex gap-2 text-xs items-center mt-4 flex-wrap text-muted-foreground">
           <div className="">
             Category:{" "}
@@ -71,7 +75,10 @@ const ArticleHeader: React.FC<ArticleHeaderProps> = (article) => {
           </div>
           <div>|</div>
           <div>
-            <Link href={`/article/history/${article._id.toString()}`} className="text-blue-500 underline">
+            <Link
+              href={`/article/history/${article._id.toString()}`}
+              className="text-blue-500 underline"
+            >
               View History
             </Link>
           </div>
