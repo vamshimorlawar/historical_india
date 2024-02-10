@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 interface Article {
   _id: string;
@@ -34,11 +35,19 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               className="transition hover:ease-in p-4 border border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hover:shadow-lg hover:shadow-foreground/40"
             >
               <Link href={`/article/view/${article._id.toString()}`}>
-                <div className="flex flex-wrap gap-1">
-                  <div className="font-bold">{article.title}</div>
-                  <div>| {article.category}</div>
+                <div className="flex gap-4">
+                  <Avatar className="rounded-none">
+                    <AvatarImage src="https://github.com/shadcn.png"/>
+                    <AvatarFallback>CN</AvatarFallback>
+                  </Avatar>
+                  <div>
+                    <div className="flex flex-wrap gap-1">
+                      <div className="font-bold">{article.title}</div>
+                      <div>| {article.category}</div>
+                    </div>
+                    <div>{article.tagline}</div>
+                  </div>
                 </div>
-                <div>{article.tagline}</div>
               </Link>
             </div>
           ))

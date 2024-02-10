@@ -67,28 +67,18 @@ const HomePage = async () => {
   const topContributors: any = data.topContributors;
 
   return (
-    <div>
-      <HeroBanner/>
-      <div className="flex flex-wrap mt-10 justify-center items-center">
-      <ArticleCard articles={ topArticles} sectionTitle="Top Articles"/>
-      <ArticleCard articles={newArticles} sectionTitle="New Articles" />
+    <div className="mb-20">
+      <HeroBanner />
+      <div className="md:mx-48">
+        <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
+        <ArticleCard articles={newArticles} sectionTitle="New Articles" />
       </div>
-
-      {/* <div>
-        <div className="my-10 px-24">
-          <div className="flex flex-wrap justify-around">
-            <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
-            <ArticleCard articles={newArticles} sectionTitle="New Articles" />
-          </div>
-          <Separator className="my-4" />
-        </div>
-        <div className="flex flex-wrap px-24 my-10">
-          <ContibutorCard
-            contributors={topContributors}
-            sectionTitle="Top Contributors"
-          />
-        </div>
-      </div> */}
+      <div className="md:mx-48">
+        <ContibutorCard
+          contributors={topContributors}
+          sectionTitle="Top Contributors"
+        />
+      </div>
     </div>
   );
 };

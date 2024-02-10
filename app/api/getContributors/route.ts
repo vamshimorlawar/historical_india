@@ -51,6 +51,8 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
       {
         $project: {
           firstName: "$userData.firstName",
+          lastName: "$userData.lastName",
+          email: "$userData.email",
           points: "$points",
         },
       },
