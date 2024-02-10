@@ -37,8 +37,8 @@ const ContibutorCard: React.FC<ContributorCardProps> = ({
               <Link href="#">
                 <div className="flex items-center gap-4">
                   <Avatar className="h-12 w-12">
-                    <AvatarImage src="https://github.com/shadcn.png" />
-                    <AvatarFallback>CN</AvatarFallback>
+                    <AvatarImage src="https://github.com/shadcn-ui/ui/blob/main/apps/www/public/avatars/02.png" />
+                    <AvatarFallback>{contributor.firstName.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>
                     <div className="font-bold">{contributor.email}</div>

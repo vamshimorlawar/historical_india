@@ -50,3 +50,9 @@ export const generateVisualDiff = (oldContent: string, newContent: string) => {
 
     return result;
 };
+
+export const pointsTo = {
+  createAccount: 50,
+  editArticle: 5,
+  createArticle: 10,
+}

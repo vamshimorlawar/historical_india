@@ -43,11 +43,11 @@ export const UserNav: React.FC<UserNavProps> = (user) => {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-        <Link href={`/profile/${user.id}`}>
-          <DropdownMenuItem>
-            Profile
-            {/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
-          </DropdownMenuItem>
+          <Link href={`/profile/${user.id}`}>
+            <DropdownMenuItem>
+              Profile
+              {/* <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut> */}
+            </DropdownMenuItem>
           </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />

@@ -14,7 +14,7 @@ const Navbar = () => {
   const user = { ...session?.user };
   const pathname = usePathname();
   return (
-    <div className="p-4 sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <div className="p-4 sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 hidden md:block">
       <div className="flex flex-wrap gap-2 items-center justify-between max-w-screen-2xl mx-auto">
         <nav className="flex flex-wrap items-center gap-6 text-sm">
           <Link href="/" className="font-bold flex gap-2 items-center">

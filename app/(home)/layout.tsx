@@ -1,3 +1,4 @@
+import MobileNav from "@/components/MobileNav";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import { ToastContainer, toast} from 'react-toastify';
@@ -10,7 +11,8 @@ interface HomeLayoutProps {
 const HomeLayout = ({ children }: HomeLayoutProps) => {
   return (
     <div className="flex flex-col relative min-h-screen">
-      <Navbar />
+      <Navbar/>
+      <MobileNav/>
       <main>{children}</main>
       <Footer />
       <ToastContainer/>

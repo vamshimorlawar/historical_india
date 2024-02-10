@@ -1,10 +1,10 @@
+import { pointsTo } from "@/lib/utils";
 import Article from "@/model/Article";
 import ArticleHistory from "@/model/ArticleHistory";
 import User from "@/model/User";
 import UserHistory from "@/model/UserHistory";
 import UserStats from "@/model/UserStats";
 import { connectDB } from "@/utils/db";
-import pointsTo from "@/utils/points";
 import { NextResponse } from "next/server";
 
 export const POST = async (req: any, res: NextResponse) => {

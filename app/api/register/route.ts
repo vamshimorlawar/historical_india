@@ -3,7 +3,7 @@ import User from "@/model/User";
 import UserStats from "@/model/UserStats";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
-import pointsTo from "@/utils/points";
+import { pointsTo } from "@/lib/utils";
 
 export const POST = async (req: any) => {
   const { email, firstName, lastName, password } = await req.json();

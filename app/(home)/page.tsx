@@ -1,4 +1,5 @@
 import ArticleCard from "@/components/ArticleCard";
+import CarouselSection from "@/components/CarouselSection";
 import ContibutorCard from "@/components/ContributorCard";
 import ExploreBanner from "@/components/ExploreBanner";
 import HeroBanner from "@/components/HeroBanner";
@@ -72,6 +73,9 @@ const HomePage = async () => {
       <div className="md:mx-48">
         <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
         <ArticleCard articles={newArticles} sectionTitle="New Articles" />
+      </div>
+      <div className="md:mx-48">
+      <CarouselSection/>
       </div>
       <div className="md:mx-48">
         <ContibutorCard
