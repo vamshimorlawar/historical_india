@@ -17,6 +17,7 @@ export type Article = {
   tagline: string;
   content: string;
   category: string;
+  tags: string[];
 };
 
 export const columns: ColumnDef<Article>[] = [
@@ -27,6 +28,10 @@ export const columns: ColumnDef<Article>[] = [
   {
     accessorKey: "tagline",
     header: () => <div className="font-bold">Tagline</div>,
+  },
+  {
+    accessorKey: "tags",
+    header: () => <div className="font-bold">Tags</div>,
   },
   {
     accessorKey: "category",

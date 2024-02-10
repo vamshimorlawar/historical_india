@@ -24,43 +24,29 @@ const loading = () => {
               <TableRow>
                 <TableHead>Title</TableHead>
                 <TableHead>Tagline</TableHead>
+                <TableHead>Tags</TableHead>
                 <TableHead>Category</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              <TableRow>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-                <TableCell>
-                  <Skeleton className="w-[80%] h-4 p-4 " />
-                </TableCell>
-              </TableRow>
+              {Array.from({ length: 3 }).map((_, index) => {
+                return (
+                  <TableRow key={index}>
+                    <TableCell>
+                      <Skeleton className="w-[80%] h-4 p-4 " />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-[80%] h-4 p-4 " />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-[80%] h-4 p-4 " />
+                    </TableCell>
+                    <TableCell>
+                      <Skeleton className="w-[80%] h-4 p-4 " />
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
             </TableBody>
           </Table>
         </div>
