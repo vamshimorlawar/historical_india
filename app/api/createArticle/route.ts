@@ -1,5 +1,6 @@
 import { pointsTo } from "@/lib/utils";
 import Article from "@/model/Article";
+import ArticleComment from "@/model/ArticleComment";
 import ArticleHistory from "@/model/ArticleHistory";
 import User from "@/model/User";
 import UserHistory from "@/model/UserHistory";
@@ -50,6 +51,19 @@ export const POST = async (req: any, res: NextResponse) => {
         { new: true, upsert: true }
       );
       await articleHistory.save();
+      
+      const newComment = {
+        commentorId: user._id,
+        commentedBy: user.firstName,
+        comment: "Inti comment",
+        updatedAt: new Date()
+      }
+      const articleComment = await ArticleComment.findOneAndUpdate(
+        {articleId: savedArticleId},
+        {$push : {comments: newComment}},
+        {new: true, upsert: true}
+      );
+      await articleComment.save();
 
       const userHistory = await UserHistory.findOneAndUpdate(
         { userId: creatorId },

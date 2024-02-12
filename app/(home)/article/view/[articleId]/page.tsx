@@ -3,6 +3,7 @@ import { Separator } from "@/components/ui/separator";
 import { ObjectId } from "mongoose";
 import React, { useEffect, useState } from "react";
 import ArticleHeader from "../../_components/ArticleHeader";
+import CommentSection from "@/components/CommentSection";
 
 interface Article {
   _id: ObjectId;
@@ -45,6 +46,7 @@ const ArticleViewer = ({
         <ArticleHeader {...article}/>
         <Separator className="mt-4" />
         <div className="mt-4 tiptap text-muted-foreground" dangerouslySetInnerHTML={{__html: article.content}}/>
+        <CommentSection articleId={params.articleId}/>
       </div>
     )
   );
