@@ -52,15 +52,9 @@ export const POST = async (req: any, res: NextResponse) => {
       );
       await articleHistory.save();
       
-      const newComment = {
-        commentorId: user._id,
-        commentedBy: user.firstName,
-        comment: "Inti comment",
-        updatedAt: new Date()
-      }
+      
       const articleComment = await ArticleComment.findOneAndUpdate(
         {articleId: savedArticleId},
-        {$push : {comments: newComment}},
         {new: true, upsert: true}
       );
       await articleComment.save();

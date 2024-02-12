@@ -29,8 +29,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
 
       if (response.status == 200) {
         const data = await response.json();
-        console.log(data);
-        
+
         setComments(data.comments);
       } else {
         toast.error("Unable to get the comments", {
@@ -45,7 +44,7 @@ const CommentSection: React.FC<CommentSectionProps> = ({ articleId }) => {
     <div className="mt-10">
       Comments
       <div className="mt-4">
-        {comments
+        {comments.length > 0
           ? comments.map((comment: Comment, index: number) => {
               return (
                 <div

@@ -15,12 +15,15 @@ export const GET = async(req: any, res: any) => {
         const articleComment = await ArticleComment.findOne({
           articleId: articleId,
         });
-    
+        
+        let comments;
         if (!articleComment) {
-          return new NextResponse("Article comments not found", { status: 404 });
+          comments = [];
+        }else{
+          comments = articleComment.comments;
+
         }
     
-        const comments = articleComment.comments;
     
         return NextResponse.json({ comments: comments }, { status: 200 });
       } catch (error: any) {
