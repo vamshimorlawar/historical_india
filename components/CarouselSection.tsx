@@ -23,6 +23,8 @@ const CarouselSection = () => {
             <CarouselItem key={index}>
               <div className="p-1">
                 <Card>
+                  <CardHeader>Gallery</CardHeader>
+                  {/* <CardTitle>Gallery</CardTitle> */}
                   <CardContent className=" relative flex items-center justify-center aspect-square">
                     <Image
                       src={images[index]}

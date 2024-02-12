@@ -39,8 +39,8 @@ const ArticleCard: React.FC<ArticleCardProps> = ({
               <Link href={`/article/view/${article._id.toString()}`}>
                 <div className="flex gap-4">
                   <Avatar className="rounded-none hidden md:block">
-                    <AvatarImage src="https://github.com/shadcn.png"/>
-                    <AvatarFallback>CN</AvatarFallback>
+                    {/* <AvatarImage src="https://github.com/shadcn.png"/> */}
+                    <AvatarFallback className="rounded-none">{article.title.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div>
                     <div className="flex flex-wrap gap-1">

@@ -75,7 +75,7 @@ const HomePage = async () => {
         <ArticleCard articles={newArticles} sectionTitle="New Articles" />
       </div>
       <div className="md:mx-48">
-      <CarouselSection/>
+        <CarouselSection />
       </div>
       <div className="md:mx-48">
         <ContibutorCard
