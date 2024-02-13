@@ -47,38 +47,40 @@ const CommentForm: React.FC<CommentFormProps> = ({ articleId }) => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (!session) {
-      toast.info("Please login to comment", {
-        position: "top-right",
-      });
-      redirect("/login");
-    }
-    const comment = e.target[0].value;
-    const userId = session.user.id;
+    try {
+      if (!session) {
+        toast.info("Please login to comment", {
+          position: "top-right",
+        });
+      } else {
+        const comment = e.target[0].value;
+        const userId = session.user.id;
 
-    const response = await fetch("/api/postComments", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        comment,
-        userId,
-        articleId,
-      }),
-    });
+        const response = await fetch("/api/postComments", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            comment,
+            userId,
+            articleId,
+          }),
+        });
 
-    if (response.status === 200) {
-      toast.success("Comment posted!", {
-        position: "top-right",
-      });
-      getComments();
-      e.target[0].value = "";
-    } else {
-      toast.error("Error posting comment", {
-        position: "top-right",
-      });
-    }
+        if (response.status === 200) {
+          toast.success("Comment posted!", {
+            position: "top-right",
+          });
+          getComments();
+          e.target[0].value = "";
+        } else {
+          toast.error("Error posting comment", {
+            position: "top-right",
+          });
+        }
+      }
+    } catch (error) {}
   };
 
   return (
