@@ -73,6 +73,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ articleId }) => {
         position: "top-right",
       });
       getComments();
+      e.target[0].value = "";
     } else {
       toast.error("Error posting comment", {
         position: "top-right",
@@ -82,8 +83,8 @@ const CommentForm: React.FC<CommentFormProps> = ({ articleId }) => {
 
   return (
     <div className="mt-4">
-      <div className="font-bold mb-4">Comments</div>
-      <div className="mt-4">
+      <div className="font-bold mb-4">Comments ({comments.length})</div>
+      <div className="mt-4 text-muted-foreground">
         {comments.length > 0
           ? comments.map((comment: Comment, index: number) => {
               return (
