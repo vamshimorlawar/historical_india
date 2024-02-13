@@ -32,7 +32,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ articleId }) => {
 
     if (response.status == 200) {
       const data = await response.json();
-      setComments(data.comments);
+      setComments(data.comments.reverse());
     } else {
       toast.error("Unable to get the comments", {
         position: "top-right",
