@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 import { useEffect, useState } from "react";
 import Overview from "../_components/Overview";
 import ArticleActivity from "../_components/ArticleActivity";
+import { toast } from "react-toastify";
 
 const ProfilePage = ({ params }: { params: { userId: string } }) => {
   const { data: session } = useSession();
@@ -41,6 +42,7 @@ const ProfilePage = ({ params }: { params: { userId: string } }) => {
         setEditedArticles(data.editedArticles.reverse());        
       } catch (error) {
         // it is created when article is created;
+        toast.error("No articles created yet");
         console.log("Error fetching article activity", error);
       }
     };

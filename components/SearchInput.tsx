@@ -1,5 +1,5 @@
 // components/SearchInput.js
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Input } from './ui/input';
 
 type SearchInputProps = {
@@ -8,12 +8,21 @@ type SearchInputProps = {
 const SearchInput: React.FC<SearchInputProps> = ({ onSearch }) => {
   const [query, setQuery] = useState('');
 
+  useEffect(() => {
+    // Set a timeout to update debouncedQuery after 500ms
+    const handler = setTimeout(() => {
+      onSearch(query);
+    }, 500);
+
+    // Cleanup the timeout if query changes before 500ms
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [query]);
+
   const handleChange = (e: any) => {
     setQuery(e.target.value);
-    onSearch(e.target.value);
   };
-
- 
 
   return (
     <div className='flex flex-col max-w-[300px] md:max-w-[500px]'>

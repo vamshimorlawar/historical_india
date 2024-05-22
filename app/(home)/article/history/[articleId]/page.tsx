@@ -36,9 +36,6 @@ const getHistory = async (articleId: string) => {
     const data = await response.json();
     return data.edits.reverse();
   } else {
-    toast.error("Unable to get the history", {
-      position: "top-right",
-    });
     return [];
   }
 };

@@ -52,9 +52,13 @@ export const POST = async (req: any, res: NextResponse) => {
       );
       await articleHistory.save();
       
-      
+      const newComment = {
+        articleId: savedArticleId,
+        comments: []
+      }
       const articleComment = await ArticleComment.findOneAndUpdate(
         {articleId: savedArticleId},
+        {$push: {comments: []}},
         {new: true, upsert: true}
       );
       await articleComment.save();

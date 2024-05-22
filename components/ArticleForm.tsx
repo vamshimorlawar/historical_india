@@ -99,7 +99,7 @@ const ArticleForm = () => {
         });
         const data = await response.json();
         if (response.status == 200) {
-          router.push(`/article/edit/${data.articleId}`);
+          router.push(`/article/view/${data.articleId}`);
           toast.success("Success!", {
             position: "top-right",
           });

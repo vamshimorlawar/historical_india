@@ -1,4 +1,3 @@
-
 import { ObjectId } from "mongoose";
 import { DataTable } from "./dataTable";
 import { columns } from "./columns";
@@ -15,10 +14,10 @@ const fetchData = async () => {
   // Perform the search logic here
   let articles: any = [];
   let categories: any = [];
-  const options = JSON.stringify({ skip: 0 });
-  const response = await fetch(`http://localhost:3000/api/getArticles?options=${options}`, {
-    next: { revalidate: 3600 },
-  });
+  const options = JSON.stringify({ skip: 0, type: "new" });
+  const response = await fetch(
+    `http://localhost:3000/api/getArticles?options=${options}`
+  );
   if (response.status === 200) {
     const articlesData = await response.json();
     articles = articlesData.articles;
@@ -40,7 +39,7 @@ const Library = async () => {
         <div className="text-2xl font-bold">Library</div>
       </div>
       <div>
-        <DataTable columns={columns} data={articles}/>
+        <DataTable columns={columns} data={articles} />
       </div>
     </div>
   );

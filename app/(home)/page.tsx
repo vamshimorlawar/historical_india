@@ -20,26 +20,17 @@ const fetchData = async () => {
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             newArticleOptions
-          )}`,
-          {
-            next: { revalidate: 3600 },
-          }
+          )}`
         ),
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             topArticleOptions
-          )}`,
-          {
-            next: { revalidate: 3600 },
-          }
+          )}`
         ),
         fetch(
           `http://localhost:3000/api/getContributors?options=${JSON.stringify(
             topContributorOptions
-          )}`,
-          {
-            next: { revalidate: 3600 },
-          }
+          )}`
         ),
       ]);
 
