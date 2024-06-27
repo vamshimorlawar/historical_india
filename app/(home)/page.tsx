@@ -20,17 +20,23 @@ const fetchData = async () => {
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             newArticleOptions
-          )}`
+          )}`, {
+            cache: "no-store"
+          }
         ),
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             topArticleOptions
-          )}`
+          )}`, {
+            cache: "no-store"
+          }
         ),
         fetch(
           `http://localhost:3000/api/getContributors?options=${JSON.stringify(
             topContributorOptions
-          )}`
+          )}`, {
+            cache: "no-store"
+          }
         ),
       ]);
 
