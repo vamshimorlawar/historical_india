@@ -4,6 +4,7 @@ import ContibutorCard from "@/components/ContributorCard";
 import ExploreBanner from "@/components/ExploreBanner";
 import HeroBanner from "@/components/HeroBanner";
 import QuoteBanner from "@/components/QuoteBanner";
+import { RunMarquee } from "@/components/RunMarquee";
 import { TopCarouselSection } from "@/components/TopCarouselSection";
 import { Separator } from "@/components/ui/separator";
 
@@ -21,22 +22,25 @@ const fetchData = async () => {
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             newArticleOptions
-          )}`, {
-            cache: "no-store"
+          )}`,
+          {
+            cache: "no-store",
           }
         ),
         fetch(
           `http://localhost:3000/api/getArticles?options=${JSON.stringify(
             topArticleOptions
-          )}`, {
-            cache: "no-store"
+          )}`,
+          {
+            cache: "no-store",
           }
         ),
         fetch(
           `http://localhost:3000/api/getContributors?options=${JSON.stringify(
             topContributorOptions
-          )}`, {
-            cache: "no-store"
+          )}`,
+          {
+            cache: "no-store",
           }
         ),
       ]);
@@ -67,7 +71,8 @@ const HomePage = async () => {
 
   return (
     <div className="mb-20">
-      <TopCarouselSection/>
+      <TopCarouselSection />
+      <RunMarquee />
       <HeroBanner />
       <div className="md:mx-48">
         <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
