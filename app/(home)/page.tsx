@@ -4,6 +4,7 @@ import ContibutorCard from "@/components/ContributorCard";
 import ExploreBanner from "@/components/ExploreBanner";
 import HeroBanner from "@/components/HeroBanner";
 import QuoteBanner from "@/components/QuoteBanner";
+import { TopCarouselSection } from "@/components/TopCarouselSection";
 import { Separator } from "@/components/ui/separator";
 
 const fetchData = async () => {
@@ -66,6 +67,7 @@ const HomePage = async () => {
 
   return (
     <div className="mb-20">
+      <TopCarouselSection/>
       <HeroBanner />
       <div className="md:mx-48">
         <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
