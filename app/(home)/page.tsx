@@ -1,12 +1,10 @@
 import ArticleCard from "@/components/ArticleCard";
 import CarouselSection from "@/components/CarouselSection";
 import ContibutorCard from "@/components/ContributorCard";
-import ExploreBanner from "@/components/ExploreBanner";
 import HeroBanner from "@/components/HeroBanner";
-import QuoteBanner from "@/components/QuoteBanner";
 import { RunMarquee } from "@/components/RunMarquee";
+import { SupriseMeArticle } from "@/components/SupriseMeArticle";
 import { TopCarouselSection } from "@/components/TopCarouselSection";
-import { Separator } from "@/components/ui/separator";
 
 const fetchData = async () => {
   const newArticleOptions = { type: "new", limit: 5, skip: 0 };
@@ -74,6 +72,9 @@ const HomePage = async () => {
       <TopCarouselSection />
       <RunMarquee />
       <HeroBanner />
+      <div>
+        <SupriseMeArticle/>
+      </div>
       <div className="md:mx-48">
         <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
         <ArticleCard articles={newArticles} sectionTitle="New Articles" />
