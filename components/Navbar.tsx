@@ -18,7 +18,7 @@ const Navbar = () => {
       <div className="flex flex-wrap gap-2 items-center justify-between max-w-screen-2xl mx-auto">
         <nav className="flex flex-wrap items-center gap-6 text-sm">
           <Link href="/" className="font-bold flex gap-2 items-center">
-            Historical India
+            Yaksha Prashna
           </Link>
 
           <Link

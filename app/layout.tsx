@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Historical India",
+  title: "Yaksha Prashna",
   description: "Encyclopedia of Indian History!",
 };
 

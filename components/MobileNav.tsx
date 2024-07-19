@@ -117,7 +117,7 @@ const MobileNav = () => {
           </DropdownMenuContent>
         </DropdownMenu>
         <Link href="/" className="font-bold flex gap-2 items-center">
-          Historical India
+          Yaksha Prashna
         </Link>
       </div>
       <div>
