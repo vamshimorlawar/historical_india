@@ -3,6 +3,7 @@ import CarouselSection from "@/components/CarouselSection";
 import ContibutorCard from "@/components/ContributorCard";
 import HeroBanner from "@/components/HeroBanner";
 import { RunMarquee } from "@/components/RunMarquee";
+import { SocialMediaLink } from "@/components/SocialMediaLink";
 import { SupriseMeArticle } from "@/components/SupriseMeArticle";
 import { TopCarouselSection } from "@/components/TopCarouselSection";
 
@@ -73,7 +74,7 @@ const HomePage = async () => {
       <RunMarquee />
       <HeroBanner />
       <div>
-        <SupriseMeArticle/>
+        <SupriseMeArticle />
       </div>
       <div className="md:mx-48">
         <ArticleCard articles={topArticles} sectionTitle="Top Articles" />
@@ -87,6 +88,9 @@ const HomePage = async () => {
           contributors={topContributors}
           sectionTitle="Top Contributors"
         />
+      </div>
+      <div>
+        <SocialMediaLink />
       </div>
     </div>
   );
