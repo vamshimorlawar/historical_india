@@ -89,7 +89,7 @@ const HomePage = async () => {
           sectionTitle="Top Contributors"
         />
       </div>
-      <div>
+      <div className="md:mx-48">
         <SocialMediaLink />
       </div>
     </div>
