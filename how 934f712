@@ -1,0 +1,95 @@
+[33m934f712[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m carousal, api, about edited
+[33me55f29d[m carousal, api, about edited
+[33ma73b2a7[m ui: social media links update
+[33m2c4566e[m feat: added social links to iks
+[33m250deb2[m feat: suprise me article
+[33mf7f101f[m ui: added marquee of why?
+[33me447c49[m text: Yaksha Prashna instead of Historical India in the contetn
+[33me245978[m feat: added top carousel in the section of main page
+[33mcd18c52[m fix: force cache off nos tore
+[33m2450866[m fix: auth options and mongodb
+[33m7fe0646[m fix: bug fixes
+[33m52f66df[m removed uploadthing
+[33m47eb570[m removed uploadthing!
+[33m858ae77[m feat: uploadthing setup for filestorage
+[33md256991[m info: added user level info
+[33m9532ec2[m ui: latest comments at the top
+[33md49574f[m fix: redirect on comment without session
+[33m3fb266e[m feat: comment on article completed
+[33m643c184[m feat: comment on article completed
+[33m73eccc4[m feat: getComments on articles
+[33m7c60ea1[m feat: getComments on articles
+[33m3265720[m fix: ui changes
+[33m416bb15[m added tags to library
+[33m5b14d90[m feat: mobile nav added
+[33m75a1f4b[m mobile nav added
+[33m186705b[m added tags to the articles
+[33m2d21326[m added contrbutor card and article card on home page
+[33m1d284a9[m wip: home page
+[33m56bc7fa[m fix: user save article direct edit
+[33ma4d3fe7[m changes in user nav. Title
+[33m72a1bba[m feat: user article activity feed
+[33mbbed8fb[m removed max-h from scrollarea of history
+[33m0885734[m fix: corrected the userpoints on register
+[33md13bf2d[m Loading state in register
+[33m8e384de[m extracted visualDiff for reusability
+[33ma54514b[m extracted overview component from profil page
+[33m70a1102[m cleaned articleHistry Api
+[33m7343072[m moved timediff function to util for reusability
+[33m2078349[m ui: login register component style consistent
+[33mb3b00ff[m wip: feature user history
+[33mddaecf6[m ui: search results
+[33m586829d[m feat:view Article Diff completed
+[33md7e4149[m wip: view diff of the history
+[33m6cfa65a[m feat: Article History is implemented
+[33m5dd5f4e[m Added skeleton on profile
+[33me5b9d71[m Added routes on home banner
+[33m9a9bdaa[m fix: multiple code fixes, reactStrictMode
+[33m0eccb71[m ui: reusable components extracted from ArticleViewer and Editor
+[33m86407af[m ui update on library
+[33m588eb87[m ui: profile page
+[33mbe183d3[m uifix: nav and menu for smaller screens
+[33md77a60c[m uifix: nav and menu for smaller screens
+[33mb9d6fd5[m ui: hero banner completed
+[33m2be706d[m ui: navbar styling complete
+[33me629beb[m UI changes
+[33mb8d5633[m loader for the library
+[33mf0ddb2a[m feat: library in table format with the filter for title
+[33m71125e8[m revalidate getting article on home page
+[33ma5bcc95[m feat: loading state to create article
+[33m67ac4d3[m minor ui changes
+[33m75387ac[m footer uncommented and used in the main layout
+[33m04e40c6[m added explore banner
+[33m28badcb[m server rendering for articles
+[33m6da1ed7[m wip
+[33mc5051ee[m navbar max width
+[33mc4d6fd9[m feat: basic search functionality added
+[33m8b1098f[m feat: support links, wysiswyg look
+[33md758a55[m feat: edit article content
+[33mbf49f12[m WIP: Edit Articles
+[33m875fb69[m added user id to session
+[33m1dd990d[m feat: view articles
+[33m0868030[m dynamic route for edit article
+[33m048d535[m added api to getTopArticles, getNewArticles, and getTopContributors
+[33mc8bdab0[m added theme toggle to navbar
+[33mddf09fb[m create article client side update
+[33m3f20fd0[m added an api to create article and update user stats
+[33m5a66909[m a structure to handle the points system
+[33m0a00742[m Article Model added
+[33m9e956c0[m route to login if submitting without authentication
+[33me87ff5e[m added create-article form this is metadat not actual content
+[33mfce0b3a[m added guideline to create article page and style adjustments
+[33mdcdd226[m completed getting user and stat details on profile page
+[33me5cc26d[m storing userstats to the database
+[33m9bfd68c[m created search and article page
+[33m4a8c647[m desgined a format for profile page
+[33m65bbf38[m git ignore update
+[33md3a8976[m Delete .next directory
+[33m3b8cfab[m Module register login complete
+[33m75f5e9d[m session on the app
+[33m0400539[m handled the redirect from register after login
+[33mb4612ce[m next auth register and login complete
+[33me69b39d[m navbar and footer added
+[33me1a5499[m shadcn ui package installed
+[33mbad1506[m next app created
+[33mdc07a7c[m Initial commit
