@@ -24,7 +24,7 @@ export const TopCarouselSection = () => {
           <CarouselItem>
             <div className="relative w-full h-[500px]">
               <Image
-                src="/cara_1.jpg"
+                src="/caraIKS_1.jpg"
                 alt="Hero"
                 fill
                 className="object-cover object-center"
@@ -35,7 +35,7 @@ export const TopCarouselSection = () => {
           <CarouselItem>
             <div className="relative w-full h-[500px]">
               <Image
-                src="/cara_2.jpg"
+                src="/caraIKS_2.jpg"
                 alt="Hero"
                 fill
                 className="object-cover object-center"
@@ -43,6 +43,29 @@ export const TopCarouselSection = () => {
               />
             </div>
           </CarouselItem>
+          <CarouselItem>
+            <div className="relative w-full h-[500px]">
+              <Image
+                src="/caraIKS_3.jpg"
+                alt="Hero"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+          </CarouselItem>
+          <CarouselItem>
+            <div className="relative w-full h-[500px]">
+              <Image
+                src="/caraIKS_4.jpg"
+                alt="Hero"
+                fill
+                className="object-cover object-center"
+                priority
+              />
+            </div>
+          </CarouselItem>
+
         </CarouselContent>
         <CarouselPrevious className="absolute left-4" />
         <CarouselNext className="absolute right-4" />

@@ -13,22 +13,16 @@ const Guidelines = () => {
 
         <ul className="text-sm text-muted-foreground">
           <li>
-            Before creating article, we highly recommend searching whether
-            article already exits on search
+           Before creating article, search first to make sure that an article does not already exist with that title.
           </li>
-          <li>Add good tagline about the article</li>
+          <li>Add relevant tagline about the article.</li>
           <li>
-            Add good content Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Laboriosam vero fugit nulla architecto nisi
+            Choose a category which suits the content of the article.
           </li>
           <li>
-            Add good content Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Laboriosam vero fugit nulla architecto nisi
+            Add tags which are relevant to the content. Adding tags will make search efficient.
           </li>
-          <li>
-            Add good content Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Laboriosam vero fugit nulla architecto nisi
-          </li>
+          
         </ul>
       </div>
       <Separator className="mt-4" />
@@ -39,23 +33,16 @@ const Guidelines = () => {
         </div>
         <ul className="text-sm text-muted-foreground">
           <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            vero fugit nulla architecto nisi
+            Article content and images inserted in the artciles should not be copied from other resources.
           </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            vero fugit nulla architecto nisi
-          </li>
-          <li>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam
-            vero fugit nulla architecto nisi
-          </li>
+          
         </ul>
       </div>
+      <Separator className="mt-4" />
       <div className="mt-4 text-sm text-muted-foreground">
         Feel free to add as much information as possible on this platform. Your
-        contribution will surely make the Indian History more glorius!<br></br>
-        Wish you happy editing
+        contribution will surely make the Indian Knowledge System more glorius.<br></br>
+        Wish you happy editing!!
       </div>
     </div>
   );

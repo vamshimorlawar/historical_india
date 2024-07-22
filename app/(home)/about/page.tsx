@@ -5,19 +5,16 @@ const AboutPage = () => {
         <div className="text-2xl font-bold">About</div>
       </div>
       <div className="mt-2 text-muted-foreground">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A tenetur at
-        facere quas deserunt! Optio sint, voluptate saepe est modi dolorem quia
-        nihil, iure asperiores tenetur pariatur sunt vero cumque! Voluptatem eum
-        a repudiandae.
-        <br /> Saepe omnis ullam ut vel, accusantium fugiat commodi, repudiandae
-        aliquam reiciendis necessitatibus corrupti magni voluptatem hic non
-        voluptas explicabo, assumenda vero delectus provident laudantium
-        aspernatur culpa corporis sequi ipsum! Minima illo omnis fugit, qui
-        deleniti ad mollitia. Sapiente quibusdam vel cumque incidunt libero
-        magnam. Dicta nam, minus numquam praesentium labore eum adipisci
-        sapiente eius eligendi, nesciunt dolore provident possimus quibusdam
-        voluptatibus? Quos dolorum aperiam eius mollitia quas. Similique
-        voluptas dolor itaque ipsam expedita accusamus pariatur, at maiores?
+        The mission of Yaksha-prashna is to create articles on ancient and contemporary rich Indian knowledge systems, 
+	ranging from vedic philosophical and cognitive sciences, historical and civilizational sciences, 
+	contemporary social / cultural sciences, mathematical, physical and astronomical sciences, speech and linguistics, 
+	political, economic and strategic sciences, medical and health sciences, culinary, nutritional  and pharmacological 
+	sciences, agricultural science, veterinary and animal husbandry, performing arts, mechanical & digital design & engineering, 
+	civil and architectural science, fine arts and sculpture, chemical, metallurgical & material sciences, fashion and interior 
+	design, edutainment  sciences and the oral traditions of India. 
+         
+        <br />It also provides links to books, audio,  and video resources, including knowledge hidden in Sanskrit, Prakrit, 
+	Tamil, Pali, and other classical languages.
       </div>
     </div>
   );

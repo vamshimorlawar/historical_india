@@ -7,7 +7,7 @@ export const SupriseMeArticle = () => {
   const router = useRouter();
   const fetchData = () => {
     startTransition(() => {
-      fetch("http://localhost:3000/api/getRandomArticle", {
+      fetch( `/api/getRandomArticle`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

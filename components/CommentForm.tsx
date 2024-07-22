@@ -24,7 +24,7 @@ const CommentForm: React.FC<CommentFormProps> = ({ articleId }) => {
 
   const getComments = async () => {
     const response = await fetch(
-      `http://localhost:3000/api/getComments?articleId=${articleId}`,
+      `/api/getComments?articleId=${articleId}`,
       {
         cache: "no-cache",
       }
